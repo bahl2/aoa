@@ -42,11 +42,6 @@ public class MenuOpcoes : MonoBehaviour
     private void Start()
     {
         _CFG = FindObjectOfType<CFG>();
-        _IdiomaSelecionado = GoogleTradutor._Siglas[(int)_CFG.Idioma];
-        _LegendaSelecionada = GoogleTradutor._Siglas[(int)_CFG.Legenda];
-        _Idioma.Value = _IdiomaSelecionado;
-        _Legenda.Value = _LegendaSelecionada;
-        _Som.Value = _CFG.Som;
     }
 
     private void Update()
@@ -115,6 +110,11 @@ public class MenuOpcoes : MonoBehaviour
     private IEnumerator Ativa(bool pValor)
     {
         yield return new WaitForSeconds(0.5f);
+        _IdiomaSelecionado = GoogleTradutor._Siglas[(int)_CFG.Idioma];
+        _LegendaSelecionada = GoogleTradutor._Siglas[(int)_CFG.Legenda];
+        _Idioma.Value = _IdiomaSelecionado;
+        _Legenda.Value = _LegendaSelecionada;
+        _Som.Value = _CFG.Som;
         _Ativo = pValor;
     }
 

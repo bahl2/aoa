@@ -3,7 +3,7 @@
 public class Cristal : MonoBehaviour
 {
     [SerializeField]
-    private float _TempoCurar;   
+    private float _TempoCurar;
     private float _TempoCurando;
 
     private void Update()
@@ -16,7 +16,7 @@ public class Cristal : MonoBehaviour
         if (_TempoCurando > _TempoCurar)
         {
             _TempoCurando = 0;
-            Jogador lJogador = pColisao.GetComponent<Jogador>();
+            Jogadores lJogador = pColisao.GetComponent<Jogadores>();
             if (lJogador != null)
             {
                 lJogador._BarraVida.AddVida(20);

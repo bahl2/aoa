@@ -8,7 +8,7 @@ AnimatorController:
   m_Name: Caveira
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Animacao
+  - m_Name: Acao
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -35,8 +35,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: Animacao
-    m_EventTreshold: 1
+    m_ConditionEvent: Acao
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102409419644963408}
   m_Solo: 0

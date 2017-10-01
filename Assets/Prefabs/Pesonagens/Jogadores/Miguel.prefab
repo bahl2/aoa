@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4274552706967874}
   - component: {fileID: 212359436482522776}
-  m_Layer: 15
+  m_Layer: 14
   m_Name: PinMiguel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1821431709426770}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ef517f775a4ebfa4fad25d34f30053d6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -620,11 +620,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _BarraVida: {fileID: 0}
-  _BarraMana: {fileID: 0}
-  _Direcao: 0
   _Velocidade: 150
-  _TempoEscolhaCombo: 0.5
+  _Direcao: 0
   _AnimacaoAtual: 0
+  _TempoEscolhaCombo: 0.5
+  _BarraMana: {fileID: 0}
 --- !u!212 &212023559077238922
 SpriteRenderer:
   m_ObjectHideFlags: 1

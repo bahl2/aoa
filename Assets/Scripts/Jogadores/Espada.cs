@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Espada : MonoBehaviour
 {
@@ -33,20 +33,20 @@ public class Espada : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D pColisao)
     {
-        Inimigo lInimigoAtacando = _Pesonagem.GetComponent<Inimigo>();
-        Jogador lJogadorAtacando = _Pesonagem.GetComponent<Jogador>();
+        Inimigos lInimigoAtacando = _Pesonagem.GetComponent<Inimigos>();
+        Jogadores lJogadorAtacando = _Pesonagem.GetComponent<Jogadores>();
         if (lJogadorAtacando != null)
         {
-            Inimigo lInimigo = pColisao.GetComponent<Inimigo>();
+            Inimigos lInimigo = pColisao.GetComponent<Inimigos>();
             if (lInimigo != null)
             {
                 _Vida = lInimigo._BarraVida;
                 _Vida.gameObject.SetActive(true);
-                if (lJogadorAtacando.GetComponent<ControleMiguel>()._AnimacaoAtual == ControleMiguel.EAnimacao.Ataque1)
+                if (lJogadorAtacando.GetComponent<ControleMiguel>()._Acao == Personagens.EAcoes.Ataque1)
                 {
                     _Dano = 10;
                 }
-                else if (lJogadorAtacando.GetComponent<ControleMiguel>()._AnimacaoAtual == ControleMiguel.EAnimacao.Ataque2)
+                else if (lJogadorAtacando.GetComponent<ControleMiguel>()._Acao == Personagens.EAcoes.Ataque2)
                 {
                     _Dano = 20;
                 }
@@ -58,7 +58,7 @@ public class Espada : MonoBehaviour
         }
         else if (lInimigoAtacando != null)
         {
-            Jogador lJogador = pColisao.GetComponent<Jogador>();
+            Jogadores lJogador = pColisao.GetComponent<Jogadores>();
             if (lJogador != null)
             {
                 _Vida = lJogador._BarraVida;
@@ -69,13 +69,13 @@ public class Espada : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D pColisao)
     {
-        _Vida = null;        
+        _Vida = null;
     }
-    
+
     private IEnumerator DesativaVida()
     {
         yield return new WaitForSeconds(1);
         if (_Vida != null)
-           _Vida.gameObject.SetActive(false);        
+            _Vida.gameObject.SetActive(false);
     }
 }

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4198289343887524}
   - component: {fileID: 212898862310219914}
-  m_Layer: 15
+  m_Layer: 14
   m_Name: PinInimigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1321488027655316}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ef517f775a4ebfa4fad25d34f30053d6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -235,6 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BarraVida: {fileID: 114357357276789526}
   _Velocidade: 70
+  _Direcao: 0
+  _Acao: 0
   _DistanciaMin: 5
   _TempoPatrulhar: 3
   _TempoAtaque: 3

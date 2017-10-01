@@ -15,8 +15,8 @@ public class Legenda : MonoBehaviour {
 
     private void OnEnable()
     {
-        Jogador[] lJogadores = FindObjectsOfType<Jogador>();
-        foreach (Jogador lJogador in lJogadores)
+        Jogadores[] lJogadores = FindObjectsOfType<Jogadores>();
+        foreach (Jogadores lJogador in lJogadores)
         {
             lJogador.Ativo = false;
         }
@@ -24,8 +24,8 @@ public class Legenda : MonoBehaviour {
 
     private void OnDisable()
     {
-        Jogador[] lJogadores = FindObjectsOfType<Jogador>();
-        foreach (Jogador lJogador in lJogadores)
+        Jogadores[] lJogadores = FindObjectsOfType<Jogadores>();
+        foreach (Jogadores lJogador in lJogadores)
         {
             lJogador.Ativo = true;
         }

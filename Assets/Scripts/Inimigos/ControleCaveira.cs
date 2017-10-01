@@ -1,109 +1,40 @@
-﻿using UnityEngine;
-
-public class ControleCaveira : Inimigo
+﻿public class ControleCaveira : Inimigos
 {
-    [SerializeField]
-    private float _Velocidade;
-    [SerializeField]
-    private float _DistanciaMin;
-    [SerializeField]
-    private float _TempoPatrulhar;
-    [SerializeField]
-    private float _TempoAtaque;    
-    private float _TempoPatrulhando;
-    private Jogador _Jogador;
-    private Rigidbody2D _Controle;
-    private float _TempoAtacando;
-    private EEstados _EstadoAtual;
-
-    private enum EEstados
+    internal override void MovimentoIA()
     {
-        Patrulhando,
-        Perseguindo,
-        Atacando
-    }
-
-    internal override void Start()
-    {
-        base.Start();
-        _Jogador = FindObjectOfType<Jogador>();
-        _Controle = GetComponent<Rigidbody2D>();
-        _EstadoAtual = EEstados.Patrulhando;
-        _Eixo = transform.TransformDirection(Vector2.right);
-        _TempoPatrulhando = 0;
-        _TempoAtacando = 0;
-        _VelocidadeAtual = _Velocidade;
-    }
-
-    internal override void Update()
-    {
-        base.Update();       
-        MovimentoIA();
-    }
-
-    private void FixedUpdate()
-    {
-        Movimento();
-    }
-
-    private void Movimento()
-    {
-        _Controle.velocity = _Eixo * _VelocidadeAtual * Time.fixedDeltaTime;
-    }
-
-    private void MovimentoIA()
-    {
-        if (_EstadoAtual == EEstados.Patrulhando)
+        base.MovimentoIA();
+        switch (_Acao)
         {
-            _VelocidadeAtual = _Velocidade;
-            if (JogadorPerto())
-            {
-                Perseguir();
-            }
-            else
-            {
-                Patrulhar();
-            }
-        }
-        else if (_EstadoAtual == EEstados.Perseguindo)
-        {
-            _VelocidadeAtual = _Velocidade;
-            if (JogadorPerto())
-            {
-                Perseguir();
-            }
-            else
-            {
-                Patrulhar();
-            }
-        }
-        else if (_EstadoAtual == EEstados.Atacando)
-        {
-            Atacar();
-        }
-        _TempoAtacando += Time.deltaTime;
-        _TempoPatrulhando += Time.deltaTime;
-    }
-
-    private bool JogadorPerto()
-    {
-        Vector3 lDistancia = transform.position - _Jogador.transform.position;
-        return lDistancia.magnitude <= _DistanciaMin;
-    }
-
-    private void Patrulhar()
-    {
-        _EstadoAtual = EEstados.Patrulhando;
-        if (_TempoPatrulhando > _TempoPatrulhar)
-        {
-            TrocarDirecao();
-            _TempoPatrulhando = 0;
+            case EAcoes.Atacando:
+                {
+                    if (_Bateu == _Jogador.transform)
+                    {
+                        Ataca();
+                    }
+                    else if (JogadorPerto())
+                    {
+                        Persegue();
+                    }
+                    else
+                    {
+                        Patrulha();
+                    }
+                    break;
+                }
+            case EAcoes.Perseguindo:
+                {
+                    if (_Bateu == _Jogador.transform)
+                    {
+                        Ataca();
+                    }
+                    break;
+                }
         }
     }
 
-    private void Atacar()
+    private void Ataca()
     {
-        _EstadoAtual = EEstados.Atacando;        
+        _Acao = EAcoes.Atacando;
         if (_TempoAtacando > _TempoAtaque)
         {
             _TempoAtacando = 0;
@@ -112,43 +43,9 @@ public class ControleCaveira : Inimigo
         }
     }
 
-    private void TrocarDirecao()
+    internal override void Persegue()
     {
-        _Eixo = _Eixo * -1;
-    }
-
-    private void Perseguir()
-    {
-        _EstadoAtual = EEstados.Perseguindo;
+        base.Persegue();
         _Eixo = (_Jogador.transform.position - transform.position).normalized;
-    }
-
-    private void OnCollisionStay2D(Collision2D pColisao)
-    {
-        if (_Jogador.gameObject == pColisao.gameObject)
-        {
-            if ((_Jogador as ControleMiguel)._AnimacaoAtual != ControleMiguel.EAnimacao.Voando)
-                Atacar();
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D pColisao)
-    {
-        if (_Jogador.gameObject != pColisao.gameObject)
-        {
-            TrocarDirecao();
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D pColisao)
-    {
-        if (_Jogador.gameObject == pColisao.gameObject)
-        {
-            Perseguir();
-        }
-        else
-        {
-            Patrulhar();
-        }
     }
 }

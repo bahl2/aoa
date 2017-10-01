@@ -22,7 +22,7 @@ public class Poder : MonoBehaviour
     {
         if (_Jogador)
         {
-            Inimigo lInimigo = pColisao.GetComponent<Inimigo>();
+            Inimigos lInimigo = pColisao.GetComponent<Inimigos>();
             if (lInimigo != null)
             {
                 lInimigo._BarraVida.Dano = 10;
@@ -31,7 +31,7 @@ public class Poder : MonoBehaviour
         }
         else
         {
-            Jogador lJogador = pColisao.GetComponent<Jogador>();
+            Jogadores lJogador = pColisao.GetComponent<Jogadores>();
             if (lJogador != null)
             {
                 lJogador._BarraVida.Dano = 10;

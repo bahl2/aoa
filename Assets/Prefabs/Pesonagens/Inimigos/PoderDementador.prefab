@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114943487830553898}
   - component: {fileID: 50922200297150604}
   - component: {fileID: 60147668040087228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PoderDementador
   m_TagString: Untagged
   m_Icon: {fileID: 0}

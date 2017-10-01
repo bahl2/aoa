@@ -17,7 +17,7 @@ public class TestesInput : MonoBehaviour
     void Update()
     {
         txt.text = 
-            "Jogador " + indiceJogador + "\n\n" +
+            "Jogadores " + indiceJogador + "\n\n" +
             InputArcade.Apertado(indiceJogador, EControle.CIMA) + " - " +
             InputArcade.Apertado(indiceJogador, EControle.DIREITA) + " - " +
             InputArcade.Apertado(indiceJogador, EControle.BAIXO) + " - " +

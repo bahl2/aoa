@@ -6,7 +6,7 @@ public class BarraMana : MonoBehaviour
 {
 
     [SerializeField]
-    private Jogador _Jogador;
+    private Jogadores _Jogador;
     public float _ManaMaxima;
     public float _ManaAtual;
     private Image _BarraMana;
@@ -25,11 +25,11 @@ public class BarraMana : MonoBehaviour
         {
             yield return new WaitForSeconds(5);
             if (_ManaAtual > 0 && _ManaAtual <= _ManaMaxima)
-            {                
+            {
                 if (_Jogador as ControleMiguel)
                 {
                     ControleMiguel lMiguel = _Jogador as ControleMiguel;
-                    if (lMiguel._AnimacaoAtual == ControleMiguel.EAnimacao.Voando)
+                    if (lMiguel._Acao == ControleMiguel.EAcoes.Voando)
                     {
                         AddMana(-10);
                     }

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4007865547179564}
   - component: {fileID: 212043778276049674}
-  m_Layer: 15
+  m_Layer: 14
   m_Name: PinInimigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 1778036154805240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 76, y: -16.43, z: 0}
-  m_LocalScale: {x: -1.615745, y: 1.6157448, z: 1.6157448}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224972860671168242}
   - {fileID: 4132001649998730}
@@ -218,7 +218,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1778036154805240}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ef517f775a4ebfa4fad25d34f30053d6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -386,6 +386,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BarraVida: {fileID: 114469718348762196}
   _Velocidade: 70
+  _Direcao: 0
+  _Acao: 0
   _DistanciaMin: 5
   _TempoPatrulhar: 3
   _TempoAtaque: 3
