@@ -17,7 +17,9 @@ public class ControleMiguel : Jogadores
             base.Update();
             _Eixo.y = InputArcade.Eixo(0, EEixo.VERTICAL);
             _Eixo.x = InputArcade.Eixo(0, EEixo.HORIZONTAL);
-            _BotaoAtaque = InputArcade.Apertou(0, EControle.VERMELHO);
+            _BotaoAtaque1 = InputArcade.Apertou(0, EControle.AZUL);
+            _BotaoAtaque2 = InputArcade.Apertou(0, EControle.AMARELO);
+            _BotaoAtaque3 = InputArcade.Apertou(0, EControle.BRANCO);
             _BotaoVoo = InputArcade.Apertou(0, EControle.VERDE);
         }
     }

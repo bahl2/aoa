@@ -3,12 +3,10 @@ using UnityEngine;
 
 public class Jogadores : Personagens
 {
-    [SerializeField]
-    internal float _TempoEscolhaCombo;
     internal bool _Ativo;
-    internal float _TempoCombo;
-    internal int _Ataque;
-    internal bool _BotaoAtaque;
+    internal bool _BotaoAtaque1;
+    internal bool _BotaoAtaque2;
+    internal bool _BotaoAtaque3;
     public BarraMana _BarraMana;
 
     public bool Ativo
@@ -34,7 +32,6 @@ public class Jogadores : Personagens
         if (Ativo)
         {
             base.Update();
-            _TempoCombo += Time.deltaTime;
             Animacao();
         }
         else Para();
@@ -50,31 +47,6 @@ public class Jogadores : Personagens
     {
         switch (_Acao)
         {
-            case EAcoes.Atacando:
-                {
-                    if (_TempoCombo <= _TempoEscolhaCombo)
-                    {
-                        if (_BotaoAtaque && _Ataque < 3)
-                            Ataca();
-                    }
-                    else
-                    {
-                        _TempoCombo = 0;
-                        switch (_Ataque)
-                        {
-                            case 2:
-                                Ataque2();
-                                break;
-                            case 3:
-                                Ataque3();
-                                break;
-                            default:
-                                Ataque1();
-                                break;
-                        }
-                    }
-                    break;
-                }
             case EAcoes.Ataque1:
                 {
                     Ataque1();
@@ -153,10 +125,12 @@ public class Jogadores : Personagens
                             }
                         }
                     }
-                    if (_BotaoAtaque)
-                    {
-                        Ataca();
-                    }
+                    if (_BotaoAtaque1)
+                        Ataque1();
+                    else if (_BotaoAtaque2)
+                        Ataque2();
+                    else if (_BotaoAtaque3)
+                        Ataque3();
                     break;
                 }
         }
@@ -171,8 +145,6 @@ public class Jogadores : Personagens
     internal virtual void Para()
     {
         _Acao = EAcoes.Parado;
-        _Ataque = 0;
-        _TempoCombo = 0;
         _VelocidadeAtual = 0;
     }
 
@@ -204,13 +176,6 @@ public class Jogadores : Personagens
     {
         _VelocidadeAtual = _Velocidade;
         _Acao = EAcoes.Ataque3;
-    }
-
-    internal virtual void Ataca()
-    {
-        _VelocidadeAtual = _Velocidade;
-        _Acao = EAcoes.Atacando;
-        _Ataque++;
     }
 
     public virtual void Reinicia()

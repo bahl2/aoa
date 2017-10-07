@@ -18,15 +18,16 @@ public class BarraVida : MonoBehaviour
 
     private void Start()
     {
-        _BarraVida = transform.Find("Vida").GetComponent<Image>();        
+        _BarraVida = transform.Find("Vida").GetComponent<Image>();
         _BarraVida.fillAmount = _VidaAtual == 0 ? 0 : _VidaAtual / _VidaMaxima;// o fillamount impede numeros negativos        
     }
 
     public void AddVida(float pVida)
     {
         if (pVida == 0)
-            pVida -= _VidaAtual;        
-        _VidaAtual += pVida;        
-        _BarraVida.fillAmount = _VidaAtual == 0 ? 0 : _VidaAtual / _VidaMaxima;// o fillamount impede numeros negativos
+            pVida -= _VidaAtual;
+        _VidaAtual += pVida;
+        if (_BarraVida != null)
+            _BarraVida.fillAmount = _VidaAtual == 0 ? 0 : _VidaAtual / _VidaMaxima;// o fillamount impede numeros negativos
     }
 }

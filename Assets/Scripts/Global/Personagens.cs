@@ -20,25 +20,25 @@ public class Personagens : MonoBehaviour
     public enum EAcoes
     {
         #region Global
-        Morrendo,
-        Atacando,
+        Morrendo = 0,
+        Atacando = 1,
         #endregion
         #region Inimigos
-        Patrulhando,
-        Perseguindo,
+        Patrulhando = 2,
+        Perseguindo = 3,
         #endregion 
         #region Jogadores
-        Parado,
-        Andando,
-        Correndo,
-        Ataque1,
-        Ataque2,
-        Ataque3,
+        Parado = 4,
+        Andando = 5,
+        Correndo = 6,
+        Ataque1 = 7,
+        Ataque2 = 8,
+        Ataque3 = 9,
         #endregion
         #region Miguel
-        LevatandoVoo,
-        Voando,
-        Pousando
+        LevatandoVoo = 10,
+        Voando = 11,
+        Pousando = 12
         #endregion
     }
 

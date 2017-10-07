@@ -189,8 +189,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4015138010515602}
-  - component: {fileID: 61742211520984170}
   - component: {fileID: 114583889983555142}
+  - component: {fileID: 61875466815046238}
   m_Layer: 8
   m_Name: Ataque
   m_TagString: Untagged
@@ -402,7 +402,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &61742211520984170
+--- !u!61 &61875466815046238
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -414,7 +414,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.94328094, y: -0.18082952}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -425,7 +425,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3952947, y: 2.610258}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!70 &70510750890927426
 CapsuleCollider2D:
@@ -606,7 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085e03924bdad664e82a099dd0e66541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Pesonagem: {fileID: 1821431709426770}
+  _Jogador: {fileID: 114923634893338956}
   _TempoAtaque: 1
 --- !u!114 &114923634893338956
 MonoBehaviour:
@@ -622,8 +622,7 @@ MonoBehaviour:
   _BarraVida: {fileID: 0}
   _Velocidade: 150
   _Direcao: 0
-  _AnimacaoAtual: 0
-  _TempoEscolhaCombo: 0.5
+  _Acao: 0
   _BarraMana: {fileID: 0}
 --- !u!212 &212023559077238922
 SpriteRenderer:

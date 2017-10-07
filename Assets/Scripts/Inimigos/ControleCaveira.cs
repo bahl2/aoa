@@ -35,10 +35,10 @@
     private void Ataca()
     {
         _Acao = EAcoes.Atacando;
+        _VelocidadeAtual = 0;
         if (_TempoAtacando > _TempoAtaque)
         {
             _TempoAtacando = 0;
-            _VelocidadeAtual = 0;
             _Jogador._BarraVida.Dano = 10;
         }
     }
