@@ -1,4 +1,6 @@
-﻿public class ControleCaveira : Inimigos
+﻿using UnityEngine;
+
+public class ControleCaveira : Inimigos
 {
     internal override void MovimentoIA()
     {
@@ -40,6 +42,9 @@
         {
             _TempoAtacando = 0;
             _Jogador._BarraVida.Dano = 10;
+            Vector3 lPosicaoJogador = _Jogador.transform.position;
+            lPosicaoJogador.x += -(int)_Jogador._Direcao;
+            _Jogador.transform.position = lPosicaoJogador;
         }
     }
 

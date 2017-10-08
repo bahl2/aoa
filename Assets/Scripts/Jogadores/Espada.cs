@@ -9,12 +9,12 @@ public class Espada : MonoBehaviour
     [SerializeField]
     private float _TempoAtaque;
     private float _TempoAtacando;
-    private BoxCollider2D _Colisor;
+    private CircleCollider2D _Colisor;
     private int _Dano;
 
     private void Start()
     {
-        _Colisor = GetComponent<BoxCollider2D>();
+        _Colisor = GetComponent<CircleCollider2D>();
     }
 
     private void Update()
@@ -35,13 +35,7 @@ public class Espada : MonoBehaviour
             {
                 _Dano = 30;
             }
-            RaycastHit2D[] lHits = Physics2D.BoxCastAll(transform.position, _Colisor.size, _Colisor.edgeRadius,
-                _Jogador.transform.TransformDirection(Vector2.right));
-            /*GameObject test = new GameObject("test");
-            test.transform.position = transform.position;
-            test.AddComponent<BoxCollider2D>().size = _Colisor.size;
-            test.transform.rotation = Quaternion.Euler(0, 0, _Colisor.edgeRadius);*/
-
+            RaycastHit2D[] lHits = Physics2D.CircleCastAll(transform.position, _Colisor.radius, new Vector2(1, 1));
             foreach (RaycastHit2D lHit in lHits)
             {
                 Inimigos lInimigo = lHit.transform.GetComponent<Inimigos>();
@@ -49,6 +43,9 @@ public class Espada : MonoBehaviour
                 {
                     lInimigo._BarraVida.gameObject.SetActive(true);
                     lInimigo._BarraVida.Dano = _Dano;
+                    Vector3 lPosicaoInimigo = lInimigo.transform.position;
+                    lPosicaoInimigo.x += -(int)lInimigo._Direcao;
+                    lInimigo.transform.position = lPosicaoInimigo;
                     StartCoroutine(DesativaVida(lInimigo._BarraVida.gameObject));
                 }
             }
