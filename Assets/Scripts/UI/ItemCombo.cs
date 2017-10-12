@@ -3,11 +3,6 @@ using UnityEngine.UI;
 
 public class ItemCombo : MonoBehaviour
 {
-    [SerializeField]
-    private string _Value;
-    [SerializeField]
-    private bool _Focused;
-
     public bool Focused
     {
         get
@@ -28,4 +23,9 @@ public class ItemCombo : MonoBehaviour
             return _Value;
         }
     }
+
+    [SerializeField]
+    private string _Value;
+    [SerializeField]
+    private bool _Focused;
 }

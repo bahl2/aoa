@@ -1,9 +1,8 @@
 ﻿using ArcadePUCCampinas;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class MenuPrincipal : MonoBehaviour
+public class MenuPrincipal : MenuBase
 {
     [SerializeField]
     private ComponenteBase _BotaoJogar;
@@ -15,30 +14,22 @@ public class MenuPrincipal : MonoBehaviour
     private MenuOpcoes _MenuOpcoes;
     [SerializeField]
     private VideoClip _Video;
-    private ComponenteBase[] _Componentes;
-    private bool _Ativo;
 
-    public bool Ativo
+    public void BotaoSair()
     {
-        get
-        {
-            return _Ativo;
-        }
-        set
-        {
-            StartCoroutine(Ativa(value));
-            if (value)
-            {
-                ComponenteBase.Focar(_Componentes, 0);
-                transform.parent.GetComponent<Canvas>().sortingOrder = 1;
-            }
-            else transform.parent.GetComponent<Canvas>().sortingOrder = 0;
-        }
+        Application.Quit();
     }
 
-    private void Awake()
+    public void BotaoJogar()
     {
-        _Componentes = CFG.ProcurarComponentesCena<ComponenteBase>(transform);
+        CutScene.Video = _Video;
+        CutScene.ProximaCena = GameTags.ECenas.Fase1;
+    }
+
+    public void BotaoOpcoes()
+    {
+        Ativo = false;
+        _MenuOpcoes.Ativo = true;
     }
 
     private void Update()
@@ -73,28 +64,5 @@ public class MenuPrincipal : MonoBehaviour
                 }
             }
         }
-    }
-
-    private IEnumerator Ativa(bool pValor)
-    {
-        yield return new WaitForSeconds(0.5f);
-        _Ativo = pValor;
-    }
-
-    public void BotaoSair()
-    {
-        Application.Quit();
-    }
-
-    public void BotaoJogar()
-    {
-        CutScene.Video = _Video;
-        CutScene.ProximaCena = GameTags.ECenas.Fase1;
-    }
-
-    public void BotaoOpcoes()
-    {
-        Ativo = false;
-        _MenuOpcoes.Ativo = true;
     }
 }

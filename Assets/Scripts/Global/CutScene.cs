@@ -1,10 +1,10 @@
-﻿using System;
+﻿using ArcadePUCCampinas;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Video;
-using ArcadePUCCampinas;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class CutScene : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class CutScene : MonoBehaviour
         set
         {
             _ProximaCena = value;
-            SceneManager.LoadScene(GameTags.Cenas[(int)GameTags.ECenas.CutScene]);
+            SceneManager.LoadScene(GameTags._Cenas[(int)GameTags.ECenas.CutScene]);
         }
     }
 
@@ -39,7 +39,7 @@ public class CutScene : MonoBehaviour
     private Text _Texto;
     private static GameTags.ECenas _ProximaCena;
     private static float _Segundos;
-    private static VideoClip _Video;    
+    private static VideoClip _Video;
     private VideoPlayer _VideoPlayer;
 
     private void Start()
@@ -55,8 +55,8 @@ public class CutScene : MonoBehaviour
 
     private void Update()
     {
-        if (InputArcade.Apertou(0,EControle.VERDE))
-           SceneManager.LoadScene(GameTags.Cenas[(int)_ProximaCena]);
+        if (InputArcade.Apertou(0, EControle.VERDE))
+            SceneManager.LoadScene(GameTags._Cenas[(int)_ProximaCena]);
     }
 
     private IEnumerator CarregaVideo()
@@ -72,6 +72,6 @@ public class CutScene : MonoBehaviour
         _VideoPlayer.Play();
         _Audio.Play();
         yield return new WaitForSeconds(_Segundos);
-        SceneManager.LoadScene(GameTags.Cenas[(int)_ProximaCena]);
+        SceneManager.LoadScene(GameTags._Cenas[(int)_ProximaCena]);
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Espada : MonoBehaviour
 {
@@ -23,11 +22,11 @@ public class Espada : MonoBehaviour
         if (_TempoAtacando >= _TempoAtaque)
         {
             _TempoAtacando = 0;
-            if (_Jogador._Acao == Personagens.EAcoes.Ataque1)
+            if (_Jogador._Acao == Personagens.EAcoes.Combo1)
             {
                 _Dano = 10;
             }
-            else if (_Jogador._Acao == Personagens.EAcoes.Ataque2)
+            else if (_Jogador._Acao == Personagens.EAcoes.Combo2)
             {
                 _Dano = 20;
             }
@@ -46,15 +45,11 @@ public class Espada : MonoBehaviour
                     Vector3 lPosicaoInimigo = lInimigo.transform.position;
                     lPosicaoInimigo.x += -(int)lInimigo._Direcao;
                     lInimigo.transform.position = lPosicaoInimigo;
-                    StartCoroutine(DesativaVida(lInimigo._BarraVida.gameObject));
+                    StartCoroutine(lInimigo._BarraVida.Desativa());
                 }
             }
         }
     }
 
-    private IEnumerator DesativaVida(GameObject pVida)
-    {
-        yield return new WaitForSeconds(5);
-        pVida.SetActive(false);
-    }
+
 }

@@ -1,33 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using ArcadePUCCampinas;
 using UnityEngine;
-using ArcadePUCCampinas;
 
-public class Legenda : MonoBehaviour {
-
-	private void Update()
+public class Legenda : MonoBehaviour
+{
+    private void Update()
     {
-        if(InputArcade.Apertou(0, EControle.VERDE))
-        {            
+        if (InputArcade.Apertou(0, EControle.VERDE))
+        {
             gameObject.SetActive(false);
-        }            
+        }
     }
 
     private void OnEnable()
     {
-        Jogadores[] lJogadores = FindObjectsOfType<Jogadores>();
-        foreach (Jogadores lJogador in lJogadores)
+        Personagens[] lPersonagens = FindObjectsOfType<Personagens>();
+        foreach (Personagens lPersonagem in lPersonagens)
         {
-            lJogador.Ativo = false;
+            lPersonagem.Ativo = false;
         }
     }
 
     private void OnDisable()
     {
-        Jogadores[] lJogadores = FindObjectsOfType<Jogadores>();
-        foreach (Jogadores lJogador in lJogadores)
+        Personagens[] lPersonagens = FindObjectsOfType<Personagens>();
+        foreach (Personagens lPersonagem in lPersonagens)
         {
-            lJogador.Ativo = true;
+            lPersonagem.Ativo = true;
         }
     }
 }

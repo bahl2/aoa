@@ -1,30 +1,15 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Jogadores : Personagens
 {
-    internal bool _Ativo;
-    internal bool _BotaoAtaque1;
-    internal bool _BotaoAtaque2;
-    internal bool _BotaoAtaque3;
     public BarraMana _BarraMana;
+    internal bool _BotaoCombo1;
+    internal bool _BotaoCombo2;
+    internal bool _BotaoCombo3;
 
-    public bool Ativo
+    public virtual void Reinicia()
     {
-        get
-        {
-            return _Ativo;
-        }
-        set
-        {
-            StartCoroutine(Ativa(value));
-        }
-    }
-
-    internal override void Start()
-    {
-        base.Start();
-        _Ativo = true;
+        Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
     }
 
     internal override void Update()
@@ -37,29 +22,23 @@ public class Jogadores : Personagens
         else Para();
     }
 
-    internal override void FixedUpdate()
-    {
-        if (Ativo)
-            base.FixedUpdate();
-    }
-
     internal virtual void Animacao()
     {
         switch (_Acao)
         {
-            case EAcoes.Ataque1:
+            case EAcoes.Combo1:
                 {
-                    Ataque1();
+                    Combo1();
                     break;
                 }
-            case EAcoes.Ataque2:
+            case EAcoes.Combo2:
                 {
-                    Ataque2();
+                    Combo2();
                     break;
                 }
-            case EAcoes.Ataque3:
+            case EAcoes.Combo3:
                 {
-                    Ataque3();
+                    Combo3();
                     break;
                 }
             case EAcoes.Morrendo:
@@ -125,21 +104,15 @@ public class Jogadores : Personagens
                             }
                         }
                     }
-                    if (_BotaoAtaque1)
-                        Ataque1();
-                    else if (_BotaoAtaque2)
-                        Ataque2();
-                    else if (_BotaoAtaque3)
-                        Ataque3();
+                    if (_BotaoCombo1)
+                        Combo1();
+                    else if (_BotaoCombo2)
+                        Combo2();
+                    else if (_BotaoCombo3)
+                        Combo3();
                     break;
                 }
         }
-    }
-
-    internal virtual IEnumerator Ativa(bool pValor)
-    {
-        yield return new WaitForSeconds(0.5f);
-        _Ativo = pValor;
     }
 
     internal virtual void Para()
@@ -160,26 +133,21 @@ public class Jogadores : Personagens
         _VelocidadeAtual = _Velocidade * 2;
     }
 
-    internal virtual void Ataque1()
+    internal virtual void Combo1()
     {
         _VelocidadeAtual = _Velocidade;
-        _Acao = EAcoes.Ataque1;
+        _Acao = EAcoes.Combo1;
     }
 
-    internal virtual void Ataque2()
+    internal virtual void Combo2()
     {
         _VelocidadeAtual = _Velocidade;
-        _Acao = EAcoes.Ataque2;
+        _Acao = EAcoes.Combo2;
     }
 
-    internal virtual void Ataque3()
+    internal virtual void Combo3()
     {
         _VelocidadeAtual = _Velocidade;
-        _Acao = EAcoes.Ataque3;
-    }
-
-    public virtual void Reinicia()
-    {
-        Carrega.Cena = GameTags.Cenas[(int)GameTags.ECenas.MenuPrincipal];
+        _Acao = EAcoes.Combo3;
     }
 }

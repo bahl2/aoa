@@ -7,19 +7,6 @@ public class ControleDementador : Inimigos
     [SerializeField]
     private Transform _Mao;
 
-    private bool VendoJogador()
-    {
-        bool lVendo = false;
-        RaycastHit2D[] lHits = Physics2D.RaycastAll(transform.position, _Eixo, _DistanciaMin);
-        Debug.DrawRay(transform.position, _Eixo, Color.red, _DistanciaMin);
-        foreach (RaycastHit2D lHit in lHits)
-        {
-            if (_Jogador.transform == lHit.transform)
-                lVendo = true;
-        }
-        return lVendo;
-    }
-
     internal override void Persegue()
     {
         base.Persegue();
@@ -39,5 +26,18 @@ public class ControleDementador : Inimigos
             _VelocidadeAtual = _Velocidade;
             _Eixo = (_Jogador.transform.position - transform.position).normalized;
         }
+    }
+
+    private bool VendoJogador()
+    {
+        bool lVendo = false;
+        RaycastHit2D[] lHits = Physics2D.RaycastAll(transform.position, _Eixo, _DistanciaMin);
+        Debug.DrawRay(transform.position, _Eixo, Color.red, _DistanciaMin);
+        foreach (RaycastHit2D lHit in lHits)
+        {
+            if (_Jogador.transform == lHit.transform)
+                lVendo = true;
+        }
+        return lVendo;
     }
 }

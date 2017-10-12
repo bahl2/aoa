@@ -4,12 +4,19 @@ using UnityEngine.UI;
 
 public class BarraMana : MonoBehaviour
 {
-
-    [SerializeField]
-    private Jogadores _Jogador;
     public float _ManaMaxima;
     public float _ManaAtual;
+    [SerializeField]
+    private Jogadores _Jogador;
     private Image _BarraMana;
+
+    public void AddMana(float pMana)
+    {
+        if (pMana == 0)
+            pMana -= _ManaAtual;
+        _ManaAtual += pMana;
+        _BarraMana.fillAmount = _ManaAtual == 0 ? 0 : _ManaAtual / _ManaMaxima;// o fillamount impede numeros negativos
+    }
 
     private void Start()
     {
@@ -36,13 +43,5 @@ public class BarraMana : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void AddMana(float pMana)
-    {
-        if (pMana == 0)
-            pMana -= _ManaAtual;
-        _ManaAtual += pMana;
-        _BarraMana.fillAmount = _ManaAtual == 0 ? 0 : _ManaAtual / _ManaMaxima;// o fillamount impede numeros negativos
     }
 }

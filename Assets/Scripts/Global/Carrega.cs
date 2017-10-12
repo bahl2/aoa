@@ -5,19 +5,18 @@ using UnityEngine.UI;
 
 public class Carrega : MonoBehaviour
 {
-    private static string _Cena;
-
     public static string Cena
     {
         set
         {
             _Cena = value;// prepara cena de loading com a cena que deve ser carregada
-            SceneManager.LoadScene(GameTags.Cenas[(int)GameTags.ECenas.Carrega]);
+            SceneManager.LoadScene(GameTags._Cenas[(int)GameTags.ECenas.Carrega]);
         }
     }
 
     [SerializeField]
-    private Slider Progresso;
+    private Slider _Progresso;
+    private static string _Cena;
 
     private void Start()
     {
@@ -30,14 +29,13 @@ public class Carrega : MonoBehaviour
         lCarrega.allowSceneActivation = false;
         while (!lCarrega.isDone)//enquanto nao estiver carregado aguarda 
         {
-            Progresso.value = lCarrega.progress;
+            _Progresso.value = lCarrega.progress;
             if (lCarrega.progress == 0.9f)
             {
-                Progresso.value = 1f;
+                _Progresso.value = 1f;
                 lCarrega.allowSceneActivation = true;
             }
             yield return null;
         }
     }
-
 }

@@ -26,6 +26,7 @@ namespace Assets.Scripts.Objetos
         Vietnamita,
         Sueco
     }
+
     [Serializable]
     public class GoogleTradutor
     {

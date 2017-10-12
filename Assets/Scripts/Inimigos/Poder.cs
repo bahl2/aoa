@@ -2,20 +2,15 @@
 
 public class Poder : MonoBehaviour
 {
-    [SerializeField]
     public float _Velocidade;
     public Rigidbody2D _Controle;
-    public bool _Jogador;
+    [SerializeField]
+    private bool _Jogador;
 
     private void Awake()
     {
         _Controle = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 5);
-    }
-
-    private void Start()
-    {
-
     }
 
     private void OnTriggerStay2D(Collider2D pColisao)

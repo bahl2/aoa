@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class BarraVida : MonoBehaviour
@@ -16,12 +17,6 @@ public class BarraVida : MonoBehaviour
     private Image _BarraVida;
     private int _Dano;
 
-    private void Start()
-    {
-        _BarraVida = transform.Find("Vida").GetComponent<Image>();
-        _BarraVida.fillAmount = _VidaAtual == 0 ? 0 : _VidaAtual / _VidaMaxima;// o fillamount impede numeros negativos        
-    }
-
     public void AddVida(float pVida)
     {
         if (pVida == 0)
@@ -29,5 +24,17 @@ public class BarraVida : MonoBehaviour
         _VidaAtual += pVida;
         if (_BarraVida != null)
             _BarraVida.fillAmount = _VidaAtual == 0 ? 0 : _VidaAtual / _VidaMaxima;// o fillamount impede numeros negativos
+    }
+
+    public IEnumerator Desativa()
+    {
+        yield return new WaitForSeconds(5);
+        gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        _BarraVida = transform.Find("Vida").GetComponent<Image>();
+        _BarraVida.fillAmount = _VidaAtual == 0 ? 0 : _VidaAtual / _VidaMaxima;// o fillamount impede numeros negativos        
     }
 }

@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class ComponenteCombo : ComponenteBase
 {
-    [SerializeField]
-    private List<ItemCombo> _Itens;
-    private string _Value;
-
     public string Value
     {
         set
@@ -21,10 +17,9 @@ public class ComponenteCombo : ComponenteBase
         }
     }
 
-    private void Start()
-    {
-        FocarItem(0);
-    }
+    [SerializeField]
+    private List<ItemCombo> _Itens;
+    private string _Value;
 
     public ItemCombo FocarItem(int pItem)
     {
@@ -61,5 +56,10 @@ public class ComponenteCombo : ComponenteBase
         }
         lProximoItem.Focused = true;
         return lProximoItem;
+    }
+
+    private void Start()
+    {
+        FocarItem(0);
     }
 }

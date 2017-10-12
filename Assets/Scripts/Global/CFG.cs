@@ -7,20 +7,6 @@ using UnityEngine.UI;
 
 public class CFG : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _Carregando;
-    private Slider _Progresso;
-    [SerializeField]
-    private MenuOpcoes _MenuOpcoes;
-    [SerializeField]
-    private Canvas _TelaCarregando;
-    [SerializeField]
-    private MenuPrincipal _MenuPrincipal;
-    private Text[] _TextosMenuPrincipal;
-    private Text[] _TextosMenuOpcoes;
-    private List<string> _Textos;
-
-
     public EIdiomas Idioma
     {
         get
@@ -46,23 +32,76 @@ public class CFG : MonoBehaviour
         }
     }
 
-    public float Som
+    public float Volume
     {
         get
         {
-            return PlayerPrefs.GetFloat("Som");
+            return PlayerPrefs.GetFloat("Volume");
         }
         set
         {
-            PlayerPrefs.SetFloat("Som", value);
+            PlayerPrefs.SetFloat("Volume", value);
             AudioListener.volume = value;
+        }
+    }
+
+    [SerializeField]
+    private GameObject _Carregando;
+    private Slider _Progresso;
+    [SerializeField]
+    private MenuOpcoes _MenuOpcoes;
+    [SerializeField]
+    private Canvas _TelaCarregando;
+    [SerializeField]
+    private MenuPrincipal _MenuPrincipal;
+    private Text[] _TextosMenuPrincipal;
+    private Text[] _TextosMenuOpcoes;
+    private List<string> _Textos;
+
+    public static TipoComponente[] ProcurarComponentesCena<TipoComponente>(Transform pPai)
+    {
+        List<TipoComponente> lComponetes = new List<TipoComponente>();
+        for (int i = 0; i < pPai.transform.childCount; i++)
+        {
+            if (pPai.transform.GetChild(i).gameObject.activeSelf)
+            {
+                TipoComponente lComponeteAtual = pPai.transform.GetChild(i).GetComponent<TipoComponente>();
+                if (lComponeteAtual != null)
+                {
+                    lComponetes.Add(lComponeteAtual);
+                }
+                if (pPai.transform.GetChild(i).childCount > 0)
+                {
+                    ProcurarComponentesFilhos(pPai.transform.GetChild(i), ref lComponetes);
+                }
+            }
+        }
+        return lComponetes.ToArray();
+    }
+
+    public static void ProcurarComponentesFilhos<TipoComponente>(Transform pPai, ref List<TipoComponente> pComponetes)
+    {
+        for (int i = 0; i < pPai.transform.childCount; i++)
+        {
+            if (pPai.transform.GetChild(i).gameObject.activeSelf)
+            {
+                TipoComponente lComponetes = pPai.transform.GetChild(i).GetComponent<TipoComponente>();
+                if (lComponetes != null)
+                {
+                    pComponetes.Add(lComponetes);
+                }
+                if (pPai.transform.GetChild(i).childCount > 0)
+                {
+                    ProcurarComponentesFilhos(pPai.transform.GetChild(i), ref pComponetes);
+                }
+            }
         }
     }
 
     private void Awake()
     {
         _Textos = new List<string>();
-        AudioListener.volume = Som;
+        AudioListener.volume = Volume;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         _Progresso = _Carregando.GetComponentInChildren<Slider>();
         _TextosMenuPrincipal = ProcurarComponentesCena<Text>(_MenuPrincipal.transform);
@@ -109,53 +148,13 @@ public class CFG : MonoBehaviour
         _MenuOpcoes.Ativo = false;
     }
 
-    public static TipoComponente[] ProcurarComponentesCena<TipoComponente>(Transform pPai)
-    {
-        List<TipoComponente> lComponetes = new List<TipoComponente>();
-        for (int i = 0; i < pPai.transform.childCount; i++)
-        {
-            if (pPai.transform.GetChild(i).gameObject.activeSelf)
-            {
-                TipoComponente lComponeteAtual = pPai.transform.GetChild(i).GetComponent<TipoComponente>();
-                if (lComponeteAtual != null)
-                {
-                    lComponetes.Add(lComponeteAtual);
-                }
-                if (pPai.transform.GetChild(i).childCount > 0)
-                {
-                    ProcurarComponentesFilhos(pPai.transform.GetChild(i), ref lComponetes);
-                }
-            }
-        }
-        return lComponetes.ToArray();
-    }
-
-    public static void ProcurarComponentesFilhos<TipoComponente>(Transform pPai, ref List<TipoComponente> pComponetes)
-    {
-        for (int i = 0; i < pPai.transform.childCount; i++)
-        {
-            if (pPai.transform.GetChild(i).gameObject.activeSelf)
-            {
-                TipoComponente lComponetes = pPai.transform.GetChild(i).GetComponent<TipoComponente>();
-                if (lComponetes != null)
-                {
-                    pComponetes.Add(lComponetes);
-                }
-                if (pPai.transform.GetChild(i).childCount > 0)
-                {
-                    ProcurarComponentesFilhos(pPai.transform.GetChild(i), ref pComponetes);
-                }
-            }
-        }
-    }
-
     private void CFGInicial()
     {
         if (!PlayerPrefs.HasKey("Idioma"))
-           Idioma = EIdiomas.PortuguesBR;
+            Idioma = EIdiomas.PortuguesBR;
         if (!PlayerPrefs.HasKey("Legenda"))
-           Legenda = EIdiomas.PortuguesBR;
-        if (!PlayerPrefs.HasKey("Som"))
-            Som = 1;
+            Legenda = EIdiomas.PortuguesBR;
+        if (!PlayerPrefs.HasKey("Volume"))
+            Volume = 1;
     }
 }

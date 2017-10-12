@@ -9,7 +9,7 @@ public static class GameTags
         CutScene
     }
 
-    public static string[] Cenas = { "Carrega", "Fase1", "Menu Principal", "CutScene" };
+    public static string[] _Cenas = { "Carrega", "Fase1", "Menu Principal", "CutScene" };
 
     public static string ServerHost()
     {

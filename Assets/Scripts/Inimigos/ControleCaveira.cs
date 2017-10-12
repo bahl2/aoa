@@ -34,6 +34,12 @@ public class ControleCaveira : Inimigos
         }
     }
 
+    internal override void Persegue()
+    {
+        base.Persegue();
+        _Eixo = (_Jogador.transform.position - transform.position).normalized;
+    }
+
     private void Ataca()
     {
         _Acao = EAcoes.Atacando;
@@ -46,11 +52,5 @@ public class ControleCaveira : Inimigos
             lPosicaoJogador.x += -(int)_Jogador._Direcao;
             _Jogador.transform.position = lPosicaoJogador;
         }
-    }
-
-    internal override void Persegue()
-    {
-        base.Persegue();
-        _Eixo = (_Jogador.transform.position - transform.position).normalized;
     }
 }

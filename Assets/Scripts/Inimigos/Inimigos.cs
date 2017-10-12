@@ -26,11 +26,15 @@ public class Inimigos : Personagens
 
     internal override void Update()
     {
-        base.Update();
-        Vector3 lScala = transform.localScale;
-        lScala.x = (int)_Direcao;
-        _BarraVida.transform.localScale = lScala;
-        MovimentoIA();
+        if (Ativo)
+        {
+            base.Update();
+            Vector3 lScala = transform.localScale;
+            lScala.x = (int)_Direcao;
+            _BarraVida.transform.localScale = lScala;
+            MovimentoIA();
+        }
+        else _VelocidadeAtual = 0;
     }
 
     internal virtual void MovimentoIA()
@@ -94,6 +98,7 @@ public class Inimigos : Personagens
 
     internal virtual void Persegue()
     {
+        _VelocidadeAtual = _Velocidade;
         _Acao = EAcoes.Perseguindo;
     }
 

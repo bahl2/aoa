@@ -2,9 +2,9 @@
 
 public class ControleFase : MonoBehaviour
 {
-    private Inimigos[] _Inimigos;
     public Jogadores[] _Jogadores;
     public GameObject _Legenda;
+    private Inimigos[] _Inimigos;
 
     private void Start()
     {
@@ -25,12 +25,12 @@ public class ControleFase : MonoBehaviour
         {
             if (_Inimigos.Length <= 0)
             {
-                Carrega.Cena = GameTags.Cenas[(int)GameTags.ECenas.MenuPrincipal];
+                Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
             }
         }
         else
         {
-            Carrega.Cena = GameTags.Cenas[(int)GameTags.ECenas.MenuPrincipal];
+            Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
         }
     }
 }

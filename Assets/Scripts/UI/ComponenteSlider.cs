@@ -3,9 +3,6 @@ using UnityEngine.UI;
 
 public class ComponenteSlider : ComponenteBase
 {
-    [SerializeField]
-    private Slider _Slider;
-
     public float Value
     {
         get
@@ -17,4 +14,7 @@ public class ComponenteSlider : ComponenteBase
             _Slider.value = value;
         }
     }
+
+    [SerializeField]
+    private Slider _Slider;
 }

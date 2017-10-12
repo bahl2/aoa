@@ -4,10 +4,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class MenuOpcoes : MonoBehaviour
+public class MenuOpcoes : MenuBase
 {
     [SerializeField]
-    private ComponenteSlider _Som;
+    private ComponenteSlider _Volume;
     [SerializeField]
     private ComponenteCombo _Idioma;
     [SerializeField]
@@ -16,30 +16,25 @@ public class MenuOpcoes : MonoBehaviour
     private ComponenteBase _BotaoVoltar;
     private string _IdiomaSelecionado;
     private string _LegendaSelecionada;
-    [SerializeField]
-    private ComponenteBase[] _Componentes;
     private CFG _CFG;
-    private bool _Ativo;
 
-    public bool Ativo
+    public void BotaoVoltarMenu()
     {
-        get
-        {
-            return _Ativo;
-        }
-        set
-        {
-            StartCoroutine(Ativa(value));
-            if (value)
-            {
-                ComponenteBase.Focar(_Componentes, 0);
-                transform.parent.GetComponent<Canvas>().sortingOrder = 1;
-            }
-            else transform.parent.GetComponent<Canvas>().sortingOrder = 0;
-        }
+        _CFG.Idioma = (EIdiomas)Enum.ToObject(typeof(EIdiomas), Array.IndexOf(GoogleTradutor._Siglas, _IdiomaSelecionado));
+        _CFG.Legenda = (EIdiomas)Enum.ToObject(typeof(EIdiomas), Array.IndexOf(GoogleTradutor._Siglas, _LegendaSelecionada));
     }
 
-    private void Start()
+    internal override IEnumerator Ativa(bool pValor)
+    {
+        _IdiomaSelecionado = GoogleTradutor._Siglas[(int)_CFG.Idioma];
+        _LegendaSelecionada = GoogleTradutor._Siglas[(int)_CFG.Legenda];
+        _Idioma.Value = _IdiomaSelecionado;
+        _Legenda.Value = _LegendaSelecionada;
+        _Volume.Value = _CFG.Volume;
+        return base.Ativa(pValor);
+    }
+
+    private void Awake()
     {
         _CFG = FindObjectOfType<CFG>();
     }
@@ -60,15 +55,15 @@ public class MenuOpcoes : MonoBehaviour
             {
                 ComponenteBase.Focar(_Componentes, -1);
             }
-            if (ComponenteBase.Focado(_Componentes) == _Som)
+            if (ComponenteBase.Focado(_Componentes) == _Volume)
             {
                 if (InputArcade.Apertado(0, EControle.DIREITA))
                 {
-                    _CFG.Som = _Som.Value += 0.1f;
+                    _CFG.Volume = _Volume.Value += 0.1f;
                 }
                 else if (InputArcade.Apertado(0, EControle.ESQUERDA))
                 {
-                    _CFG.Som = _Som.Value -= 0.1f;
+                    _CFG.Volume = _Volume.Value -= 0.1f;
                 }
             }
             else if (ComponenteBase.Focado(_Componentes) == _Idioma)
@@ -105,22 +100,5 @@ public class MenuOpcoes : MonoBehaviour
                 }
             }
         }
-    }
-
-    private IEnumerator Ativa(bool pValor)
-    {
-        yield return new WaitForSeconds(0.5f);
-        _IdiomaSelecionado = GoogleTradutor._Siglas[(int)_CFG.Idioma];
-        _LegendaSelecionada = GoogleTradutor._Siglas[(int)_CFG.Legenda];
-        _Idioma.Value = _IdiomaSelecionado;
-        _Legenda.Value = _LegendaSelecionada;
-        _Som.Value = _CFG.Som;
-        _Ativo = pValor;
-    }
-
-    public void BotaoVoltarMenu()
-    {
-        _CFG.Idioma = (EIdiomas)Enum.ToObject(typeof(EIdiomas), Array.IndexOf(GoogleTradutor._Siglas, _IdiomaSelecionado));
-        _CFG.Legenda = (EIdiomas)Enum.ToObject(typeof(EIdiomas), Array.IndexOf(GoogleTradutor._Siglas, _LegendaSelecionada));
     }
 }

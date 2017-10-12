@@ -4,11 +4,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Outline))]
 public class ComponenteBase : MonoBehaviour
 {
-    [SerializeField]
-    private bool _Focused;
-    [SerializeField]
-    private int _TabOrder;
-
     public bool Focused
     {
         get
@@ -33,6 +28,11 @@ public class ComponenteBase : MonoBehaviour
             _TabOrder = value;
         }
     }
+
+    [SerializeField]
+    private bool _Focused;
+    [SerializeField]
+    private int _TabOrder;
 
     public static void Focar(ComponenteBase[] pComponentes, int pInc, int pTabIndex = 0)
     {

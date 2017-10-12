@@ -1,15 +1,29 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Personagens : MonoBehaviour
 {
+    public bool Ativo
+    {
+        get
+        {
+            return _Ativo;
+        }
+        set
+        {
+            StartCoroutine(Ativa(value));
+        }
+    }
+
     public BarraVida _BarraVida;
     public float _Velocidade;
     public EDirecao _Direcao;
+    public EAcoes _Acao;
+    internal bool _Ativo;
     internal Vector2 _Eixo;
     internal Rigidbody2D _Controle;
     internal Animator _Animacao;
     internal float _VelocidadeAtual;
-    public EAcoes _Acao;
 
     public enum EDirecao
     {
@@ -20,26 +34,31 @@ public class Personagens : MonoBehaviour
     public enum EAcoes
     {
         #region Global
-        Morrendo = 0,
-        Atacando = 1,
+        Morrendo,
         #endregion
         #region Inimigos
-        Patrulhando = 2,
-        Perseguindo = 3,
+        Atacando,
+        Patrulhando,
+        Perseguindo,
         #endregion 
         #region Jogadores
-        Parado = 4,
-        Andando = 5,
-        Correndo = 6,
-        Ataque1 = 7,
-        Ataque2 = 8,
-        Ataque3 = 9,
+        Parado,
+        Andando,
+        Correndo,
+        Combo1,
+        Combo2,
+        Combo3,
         #endregion
         #region Miguel
-        LevatandoVoo = 10,
-        Voando = 11,
-        Pousando = 12
+        LevatandoVoo,
+        Voando,
+        Pousando
         #endregion
+    }
+
+    public virtual void Destruir()
+    {
+        Destroy(gameObject);
     }
 
     internal virtual void Start()
@@ -47,6 +66,7 @@ public class Personagens : MonoBehaviour
         _Controle = GetComponent<Rigidbody2D>();
         _Animacao = GetComponent<Animator>();
         _VelocidadeAtual = _Velocidade;
+        _Ativo = true;
     }
 
     internal virtual void Update()
@@ -79,8 +99,9 @@ public class Personagens : MonoBehaviour
         _VelocidadeAtual = 0;
     }
 
-    public virtual void Destruir()
+    internal virtual IEnumerator Ativa(bool pValor)
     {
-        Destroy(gameObject);
+        yield return new WaitForSeconds(0.5f);
+        _Ativo = pValor;
     }
 }
