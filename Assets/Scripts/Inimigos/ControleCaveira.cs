@@ -47,7 +47,7 @@ public class ControleCaveira : Inimigos
         if (_TempoAtacando > _TempoAtaque)
         {
             _TempoAtacando = 0;
-            _Jogador._BarraVida.Dano = 10;
+            _Jogador._BarraVida.Add(-10);
             Vector3 lPosicaoJogador = _Jogador.transform.position;
             lPosicaoJogador.x += -(int)_Jogador._Direcao;
             _Jogador.transform.position = lPosicaoJogador;

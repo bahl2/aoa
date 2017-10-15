@@ -48,7 +48,7 @@ public class ControleMiguel : Jogadores
                 }
             case EAcoes.Voando:
                 {
-                    if (_BotaoVoo || _BarraMana._ManaAtual <= 0)
+                    if (_BotaoVoo || _BarraMana._Atual <= 0)
                     {
                         Pousa();
                     }
@@ -67,7 +67,7 @@ public class ControleMiguel : Jogadores
             case EAcoes.Parado:
             case EAcoes.Correndo:
                 {
-                    if (_BotaoVoo && _BarraMana._ManaAtual > 0)
+                    if (_BotaoVoo && _BarraMana._Atual > 0)
                         LevantaVoo();
                     break;
                 }

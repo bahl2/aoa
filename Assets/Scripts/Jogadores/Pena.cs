@@ -11,7 +11,7 @@ public class Pena : MonoBehaviour
         if (lJogador != null)
         {
             _Legenda.SetActive(true);
-            lJogador._BarraMana.AddMana(lJogador._BarraMana._ManaMaxima);
+            lJogador._BarraMana.Add(lJogador._BarraMana._Maximo);
             Destroy(gameObject);
         }
     }

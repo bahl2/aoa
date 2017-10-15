@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224349916397851688}
-  - component: {fileID: 114959459399766718}
+  - component: {fileID: 114710620909119362}
   m_Layer: 8
   m_Name: BarraVida
   m_TagString: Untagged
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 222635799518317078}
   - component: {fileID: 114727640817323524}
   m_Layer: 8
-  m_Name: Vida
+  m_Name: Barra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321488027655316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.3, y: -1.6399999, z: 0}
+  m_LocalPosition: {x: 70.9, y: -2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4198289343887524}
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b9160f923ff3b42b50aec7b92291c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BarraVida: {fileID: 114959459399766718}
+  _BarraVida: {fileID: 114710620909119362}
   _Velocidade: 70
   _Direcao: 0
   _Acao: 0
@@ -287,6 +287,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114710620909119362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1423178869456672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ea66e0186177549a2fdf15064f006c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Maximo: 100
+  _Atual: 100
 --- !u!114 &114727640817323524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,19 +327,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114959459399766718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1423178869456672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e903da1bf0410a49bc9037817b98da5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _VidaMaxima: 100
-  _VidaAtual: 100
 --- !u!212 &212881434267360138
 SpriteRenderer:
   m_ObjectHideFlags: 1

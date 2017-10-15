@@ -19,7 +19,7 @@ public class Cristal : MonoBehaviour
             Jogadores lJogador = pColisao.GetComponent<Jogadores>();
             if (lJogador != null)
             {
-                lJogador._BarraVida.AddVida(20);
+                lJogador._BarraVida.Add(20);
             }
         }
     }
