@@ -15,7 +15,7 @@ public class Personagens : MonoBehaviour
         }
     }
 
-    public BarraVida _BarraVida;
+    public BarraProgresso _BarraVida;
     public float _Velocidade;
     public EDirecao _Direcao;
     public EAcoes _Acao;
@@ -80,7 +80,7 @@ public class Personagens : MonoBehaviour
         transform.localScale = lScala;
         if (_BarraVida.gameObject.activeSelf)
         {
-            if (_BarraVida._VidaAtual <= 0)
+            if (_BarraVida._Atual <= 0)
             {
                 Morre();
             }

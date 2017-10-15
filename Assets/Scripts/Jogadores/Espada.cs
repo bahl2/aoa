@@ -24,15 +24,15 @@ public class Espada : MonoBehaviour
             _TempoAtacando = 0;
             if (_Jogador._Acao == Personagens.EAcoes.Combo1)
             {
-                _Dano = 10;
+                _Dano = -10;
             }
             else if (_Jogador._Acao == Personagens.EAcoes.Combo2)
             {
-                _Dano = 20;
+                _Dano = -20;
             }
             else
             {
-                _Dano = 30;
+                _Dano = -30;
             }
             RaycastHit2D[] lHits = Physics2D.CircleCastAll(transform.position, _Colisor.radius, new Vector2(1, 1));
             foreach (RaycastHit2D lHit in lHits)
@@ -41,7 +41,7 @@ public class Espada : MonoBehaviour
                 if (lInimigo != null)
                 {
                     lInimigo._BarraVida.gameObject.SetActive(true);
-                    lInimigo._BarraVida.Dano = _Dano;
+                    lInimigo._BarraVida.Add(_Dano);
                     Vector3 lPosicaoInimigo = lInimigo.transform.position;
                     lPosicaoInimigo.x += -(int)lInimigo._Direcao;
                     lInimigo.transform.position = lPosicaoInimigo;

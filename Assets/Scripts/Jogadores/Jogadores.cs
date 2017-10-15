@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Jogadores : Personagens
 {
-    public BarraMana _BarraMana;
+    public BarraProgresso _BarraMana;
+    public BarraProgresso _BarraSpecial;
     internal bool _BotaoCombo1;
     internal bool _BotaoCombo2;
     internal bool _BotaoCombo3;
@@ -147,7 +149,20 @@ public class Jogadores : Personagens
 
     internal virtual void Combo3()
     {
-        _VelocidadeAtual = _Velocidade;
-        _Acao = EAcoes.Combo3;
+        if (_BarraSpecial._Atual >= 25)
+        {
+            _VelocidadeAtual = _Velocidade;
+            _Acao = EAcoes.Combo3;
+            _BarraSpecial.Add(-25);
+        }
+    }
+
+    internal virtual IEnumerator Mana()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5);
+            _BarraMana.Add(-10);
+        }
     }
 }

@@ -20,7 +20,7 @@ public class Poder : MonoBehaviour
             Inimigos lInimigo = pColisao.GetComponent<Inimigos>();
             if (lInimigo != null)
             {
-                lInimigo._BarraVida.Dano = 10;
+                lInimigo._BarraVida.Add(-10);
                 Destroy(gameObject);
             }
         }
@@ -29,7 +29,7 @@ public class Poder : MonoBehaviour
             Jogadores lJogador = pColisao.GetComponent<Jogadores>();
             if (lJogador != null)
             {
-                lJogador._BarraVida.Dano = 10;
+                lJogador._BarraVida.Add(-10);
                 Destroy(gameObject);
             }
         }

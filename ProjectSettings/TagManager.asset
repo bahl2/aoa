@@ -21,7 +21,7 @@ TagManager:
   - Arvores
   - Chao
   - Pinos
-  - 
+  - ArcadePuc
   - 
   - 
   - 
@@ -42,12 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Particulas
+    uniqueID: 3512394693
+    locked: 0
   - name: Chao
     uniqueID: 2034911727
     locked: 0
   - name: Jogador
     uniqueID: 2374831701
-    locked: 0
-  - name: Particulas
-    uniqueID: 3512394693
     locked: 0
