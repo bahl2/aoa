@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 223369091157937244}
   - component: {fileID: 114488220816608294}
   - component: {fileID: 114699225814575520}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 224493012925853624}
   - component: {fileID: 222476230019927414}
   - component: {fileID: 114096985879721000}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 224344418778817370}
   - component: {fileID: 222636206331736184}
   - component: {fileID: 114015230421285366}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 4110608495026830}
   - component: {fileID: 114384247803454644}
   - component: {fileID: 82812705990175808}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ArcadePUC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 222934036008145616}
   - component: {fileID: 114194660223367406}
   - component: {fileID: 114106669793636646}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
