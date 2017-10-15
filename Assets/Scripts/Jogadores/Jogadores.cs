@@ -111,7 +111,10 @@ public class Jogadores : Personagens
                     else if (_BotaoCombo2)
                         Combo2();
                     else if (_BotaoCombo3)
+                    {
                         Combo3();
+                        _BarraSpecial.Add(-35);
+                    }
                     break;
                 }
         }
@@ -149,11 +152,10 @@ public class Jogadores : Personagens
 
     internal virtual void Combo3()
     {
-        if (_BarraSpecial._Atual >= 25)
+        if (_BarraSpecial._Atual > 0)
         {
             _VelocidadeAtual = _Velocidade;
             _Acao = EAcoes.Combo3;
-            _BarraSpecial.Add(-25);
         }
     }
 
