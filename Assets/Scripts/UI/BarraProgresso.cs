@@ -16,8 +16,10 @@ public class BarraProgresso : MonoBehaviour
 
     public void Add(float pAdd)
     {
-        if (pAdd == 0)
-            pAdd -= _Atual;
+        if (pAdd < 0 && _Atual < -pAdd)
+            pAdd = -_Atual;
+        if (pAdd > 0 && _Atual + pAdd >= _Maximo)
+            pAdd = _Maximo - _Atual;
         _Atual += pAdd;
         if (_Barra != null)
             Atualiza();

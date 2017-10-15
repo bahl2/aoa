@@ -8,7 +8,7 @@ public class ZonaMorte : MonoBehaviour
         if (lJogador != null)
         {
             if (lJogador._Acao != Personagens.EAcoes.Voando)
-                lJogador._BarraVida.Add(0);
+                lJogador._BarraVida.Add(-lJogador._BarraVida._Atual);
         }
     }
 }

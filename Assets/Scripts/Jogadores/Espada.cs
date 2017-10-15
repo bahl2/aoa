@@ -9,7 +9,6 @@ public class Espada : MonoBehaviour
     private float _TempoAtaque;
     private float _TempoAtacando;
     private CircleCollider2D _Colisor;
-    private int _Dano;
 
     private void Start()
     {
@@ -22,17 +21,22 @@ public class Espada : MonoBehaviour
         if (_TempoAtacando >= _TempoAtaque)
         {
             _TempoAtacando = 0;
+            int lDano = -10;
+            int lForca = 35;
             if (_Jogador._Acao == Personagens.EAcoes.Combo1)
             {
-                _Dano = -10;
+                lDano = -10;
+                lForca = 35;
             }
             else if (_Jogador._Acao == Personagens.EAcoes.Combo2)
             {
-                _Dano = -20;
+                lDano = -20;
+                lForca = 70;
             }
             else
             {
-                _Dano = -30;
+                lDano = -30;
+                lForca = 0;
             }
             RaycastHit2D[] lHits = Physics2D.CircleCastAll(transform.position, _Colisor.radius, new Vector2(1, 1));
             foreach (RaycastHit2D lHit in lHits)
@@ -41,7 +45,8 @@ public class Espada : MonoBehaviour
                 if (lInimigo != null)
                 {
                     lInimigo._BarraVida.gameObject.SetActive(true);
-                    lInimigo._BarraVida.Add(_Dano);
+                    lInimigo._BarraVida.Add(lDano);
+                    _Jogador._BarraSpecial.Add(lForca);
                     Vector3 lPosicaoInimigo = lInimigo.transform.position;
                     lPosicaoInimigo.x += -(int)lInimigo._Direcao;
                     lInimigo.transform.position = lPosicaoInimigo;
