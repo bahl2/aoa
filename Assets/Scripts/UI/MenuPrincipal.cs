@@ -48,7 +48,7 @@ public class MenuPrincipal : MenuBase
             {
                 ComponenteBase.Focar(_Componentes, -1);
             }
-            if (InputArcade.Apertou(0, EControle.VERDE))
+            if (InputArcade.Apertou(0, EControle.VERDE) || Input.GetKeyDown(KeyCode.Return))
             {
                 if (ComponenteBase.Focado(_Componentes) == _BotaoJogar)
                 {

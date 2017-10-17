@@ -88,7 +88,7 @@ public class MenuOpcoes : MenuBase
                     _LegendaSelecionada = _Legenda.Focar(-1).Value;
                 }
             }
-            if (InputArcade.Apertou(0, EControle.VERDE))
+            if (InputArcade.Apertou(0, EControle.VERDE) || Input.GetKeyDown(KeyCode.Return))
             {
                 if (ComponenteBase.Focado(_Componentes) == _BotaoVoltar)
                 {

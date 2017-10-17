@@ -1,4 +1,5 @@
 ﻿using ArcadePUCCampinas;
+using UnityEngine;
 
 public class ControleMiguel : Jogadores
 {
@@ -29,10 +30,10 @@ public class ControleMiguel : Jogadores
             base.Update();
             _Eixo.y = InputArcade.Eixo(0, EEixo.VERTICAL);
             _Eixo.x = InputArcade.Eixo(0, EEixo.HORIZONTAL);
-            _BotaoCombo1 = InputArcade.Apertou(0, EControle.AZUL);
-            _BotaoCombo2 = InputArcade.Apertou(0, EControle.AMARELO);
-            _BotaoCombo3 = InputArcade.Apertou(0, EControle.BRANCO);
-            _BotaoVoo = InputArcade.Apertou(0, EControle.VERDE);
+            _BotaoCombo1 = InputArcade.Apertou(0, EControle.AZUL) || Input.GetKeyDown(KeyCode.F9);
+            _BotaoCombo2 = InputArcade.Apertou(0, EControle.AMARELO) || Input.GetKeyDown(KeyCode.F10);
+            _BotaoCombo3 = InputArcade.Apertou(0, EControle.BRANCO) || Input.GetKeyDown(KeyCode.F11);
+            _BotaoVoo = InputArcade.Apertou(0, EControle.VERDE) || Input.GetKeyDown(KeyCode.F12);
         }
     }
 
