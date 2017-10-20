@@ -395,7 +395,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821431709426770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.77, y: 1.52, z: 0}
+  m_LocalPosition: {x: 2.77, y: 1.52, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4160949607116388}
@@ -724,6 +724,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Jogador: {fileID: 114923634893338956}
   _TempoAtaque: 0.5
+  _DanoCombos:
+  - 10
+  - 25
+  - 35
+  _SpecialForcaCombos:
+  - 5
+  - 10
+  - 0
+  _DistanciaCombos:
+  - 1
+  - 3
+  - 5
 --- !u!114 &114600260826690128
 MonoBehaviour:
   m_ObjectHideFlags: 1

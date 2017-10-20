@@ -113,7 +113,7 @@ public class Jogadores : Personagens
                     else if (_BotaoCombo3)
                     {
                         Combo3();
-                        _BarraSpecial.Add(-35);
+                        _BarraSpecial.Add(-50);
                     }
                     break;
                 }

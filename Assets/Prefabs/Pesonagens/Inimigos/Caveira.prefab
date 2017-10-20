@@ -220,7 +220,7 @@ MonoBehaviour:
   _Velocidade: 70
   _Direcao: 0
   _Acao: 0
-  _DistanciaMin: 5
+  _DistanciaMin: 20
   _TempoPatrulhar: 3
   _TempoAtaque: 3
 --- !u!114 &114398216230218382
