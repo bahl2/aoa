@@ -1,65 +1,68 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ComponenteCombo : ComponenteBase
+namespace Assets.Scripts.UI
 {
-    public string Value
+    public class ComponenteCombo : ComponenteBase
     {
-        set
+        [SerializeField]
+        private List<ItemCombo> _Itens;
+        private string _Value;
+
+        public string Value
+        {
+            set
+            {
+                foreach (ItemCombo lItem in _Itens)
+                {
+                    if (lItem.Value == value)
+                        lItem.Focused = true;
+                    else
+                        lItem.Focused = false;
+                }
+            }
+        }
+
+        private void Start()
+        {
+            FocarItem(0);
+        }
+
+        public ItemCombo FocarItem(int pItem)
         {
             foreach (ItemCombo lItem in _Itens)
             {
-                if (lItem.Value == value)
-                    lItem.Focused = true;
-                else
-                    lItem.Focused = false;
+                lItem.Focused = false;
             }
+            _Itens[pItem].Focused = true;
+            return _Itens[pItem];
         }
-    }
 
-    [SerializeField]
-    private List<ItemCombo> _Itens;
-    private string _Value;
-
-    public ItemCombo FocarItem(int pItem)
-    {
-        foreach (ItemCombo lItem in _Itens)
+        public ItemCombo Focar(int pInc = 0)
         {
-            lItem.Focused = false;
-        }
-        _Itens[pItem].Focused = true;
-        return _Itens[pItem];
-    }
-
-    public ItemCombo Focar(int pInc = 0)
-    {
-        ItemCombo lProximoItem = _Itens[0];
-        for (int i = 0; i < _Itens.Count; i++)
-        {
-            if (_Itens[i].Focused)
+            ItemCombo lProximoItem = _Itens[0];
+            for (int i = 0; i < _Itens.Count; i++)
             {
-                _Itens[i].Focused = false;
-                if (pInc > 0 && i + pInc >= _Itens.Count)
+                if (_Itens[i].Focused)
                 {
-                    pInc = 0;
+                    _Itens[i].Focused = false;
+                    if (pInc > 0 && i + pInc >= _Itens.Count)
+                    {
+                        pInc = 0;
+                    }
+                    else if (pInc < 0 && i + pInc < 0)
+                    {
+                        pInc = _Itens.Count - 1;
+                    }
+                    else
+                    {
+                        pInc += i;
+                    }
+                    lProximoItem = _Itens[pInc];
                 }
-                else if (pInc < 0 && i + pInc < 0)
-                {
-                    pInc = _Itens.Count - 1;
-                }
-                else
-                {
-                    pInc += i;
-                }
-                lProximoItem = _Itens[pInc];
             }
+            lProximoItem.Focused = true;
+            return lProximoItem;
         }
-        lProximoItem.Focused = true;
-        return lProximoItem;
-    }
-
-    private void Start()
-    {
-        FocarItem(0);
     }
 }

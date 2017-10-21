@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 
-public class ZonaMorte : MonoBehaviour
+namespace Assets.Scripts.Global
 {
-    private void OnTriggerEnter2D(Collider2D pColisao)
+    public class ZonaMorte : MonoBehaviour
     {
-        Jogadores lJogador = pColisao.GetComponent<Jogadores>();
-        if (lJogador != null)
+        private void OnTriggerEnter2D(Collider2D pColisao)
         {
-            if (lJogador._Acao != Personagens.EAcoes.Voando)
-                lJogador._BarraVida.Add(-lJogador._BarraVida._Atual);
+            Personagem lPersonagem = pColisao.GetComponent<Personagem>();
+            if (lPersonagem != null)
+            {
+                if (lPersonagem._Acao != Personagem.EAcoes.Voando)
+                    lPersonagem._BarraVida.Add(-lPersonagem._BarraVida._Atual);
+            }
         }
     }
 }

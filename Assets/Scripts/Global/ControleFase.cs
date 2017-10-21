@@ -1,36 +1,40 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Inimigos;
+using Assets.Scripts.Jogadores;
+using UnityEngine;
 
-public class ControleFase : MonoBehaviour
+namespace Assets.Scripts.Global
 {
-    public Jogadores[] _Jogadores;
-    public GameObject _Legenda;
-    private Inimigos[] _Inimigos;
-
-    private void Start()
+    public class ControleFase : MonoBehaviour
     {
-        _Legenda.SetActive(false);
-        //Na fase 1 o jogador começa indo para esquerda
-        _Jogadores = FindObjectsOfType<Jogadores>();
-        foreach (Jogadores lJogador in _Jogadores)
+        private Inimigo[] _Inimigos;
+        public Jogador[] _Jogadores;
+        public GameObject _Legenda;
+
+        private void Start()
         {
-            lJogador._Direcao = Personagens.EDirecao.Esquerda;
+            _Legenda.SetActive(false);
+            //Na fase 1 o jogador começa indo para esquerda
+            _Jogadores = FindObjectsOfType<Jogador>();
+            foreach (Jogador lJogador in _Jogadores)
+            {
+                lJogador._Direcao = Personagem.EDirecao.Esquerda;
+            }
         }
-    }
 
-
-    private void Update()
-    {
-        _Inimigos = FindObjectsOfType<Inimigos>();
-        if (_Inimigos != null)
+        private void Update()
         {
-            if (_Inimigos.Length <= 0)
+            _Inimigos = FindObjectsOfType<Inimigo>();
+            if (_Inimigos != null)
+            {
+                if (_Inimigos.Length <= 0)
+                {
+                    Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
+                }
+            }
+            else
             {
                 Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
             }
-        }
-        else
-        {
-            Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
         }
     }
 }

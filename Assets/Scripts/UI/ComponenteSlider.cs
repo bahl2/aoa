@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ComponenteSlider : ComponenteBase
+namespace Assets.Scripts.UI
 {
-    public float Value
+    public class ComponenteSlider : ComponenteBase
     {
-        get
+        [SerializeField]
+        private Slider _Slider;
+
+        public float Value
         {
-            return _Slider.value;
-        }
-        set
-        {
-            _Slider.value = value;
+            get
+            {
+                return _Slider.value;
+            }
+            set
+            {
+                _Slider.value = value;
+            }
         }
     }
-
-    [SerializeField]
-    private Slider _Slider;
 }

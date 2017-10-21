@@ -1,36 +1,40 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Jogadores;
+using UnityEngine;
 
-public class Poder : MonoBehaviour
+namespace Assets.Scripts.Inimigos
 {
-    public float _Velocidade;
-    public Rigidbody2D _Controle;
-    [SerializeField]
-    private bool _Jogador;
-
-    private void Awake()
+    public class Poder : MonoBehaviour
     {
-        _Controle = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 5);
-    }
+        [SerializeField]
+        private bool _Jogador;
+        public float _Velocidade;
+        public Rigidbody2D _Controle;
 
-    private void OnTriggerStay2D(Collider2D pColisao)
-    {
-        if (_Jogador)
+        private void Awake()
         {
-            Inimigos lInimigo = pColisao.GetComponent<Inimigos>();
-            if (lInimigo != null)
-            {
-                lInimigo._BarraVida.Add(-10);
-                Destroy(gameObject);
-            }
+            _Controle = GetComponent<Rigidbody2D>();
+            Destroy(gameObject, 5);
         }
-        else
+
+        private void OnTriggerStay2D(Collider2D pColisao)
         {
-            Jogadores lJogador = pColisao.GetComponent<Jogadores>();
-            if (lJogador != null)
+            if (_Jogador)
             {
-                lJogador._BarraVida.Add(-10);
-                Destroy(gameObject);
+                Inimigo lInimigo = pColisao.GetComponent<Inimigo>();
+                if (lInimigo != null)
+                {
+                    lInimigo._BarraVida.Add(-10);
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+                Jogador lJogador = pColisao.GetComponent<Jogador>();
+                if (lJogador != null)
+                {
+                    lJogador._BarraVida.Add(-10);
+                    Destroy(gameObject);
+                }
             }
         }
     }

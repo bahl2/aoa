@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 95160747224724686}
   - component: {fileID: 114019169363115750}
   - component: {fileID: 50554290849133356}
-  - component: {fileID: 61040424269813150}
+  - component: {fileID: 70736051410793854}
   m_Layer: 10
   m_Name: Caveira
   m_TagString: Untagged
@@ -122,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321488027655316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70.9, y: -2.1, z: 0}
+  m_LocalPosition: {x: 70.9, y: -2.1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4198289343887524}
@@ -163,31 +163,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &61040424269813150
-BoxCollider2D:
+--- !u!70 &70736051410793854
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321488027655316}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: ef517f775a4ebfa4fad25d34f30053d6, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0666667, y: 1.6666666}
-    newSize: {x: 1.2, y: 1.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.6000001, y: 2.5}
-  m_EdgeRadius: 0
+  m_Size: {x: 1.0666667, y: 1.6666666}
+  m_Direction: 0
 --- !u!95 &95160747224724686
 Animator:
   serializedVersion: 3

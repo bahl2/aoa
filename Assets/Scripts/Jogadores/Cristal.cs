@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 
-public class Cristal : MonoBehaviour
+namespace Assets.Scripts.Jogadores
 {
-    [SerializeField]
-    private float _TempoCurar;
-    private float _TempoCurando;
-
-    private void Update()
+    public class Cristal : MonoBehaviour
     {
-        _TempoCurando += Time.deltaTime;
-    }
+        [SerializeField]
+        private float _TempoCurar;
+        private float _TempoCurando;
 
-    private void OnTriggerStay2D(Collider2D pColisao)
-    {
-        if (_TempoCurando > _TempoCurar)
+        private void Update()
         {
-            _TempoCurando = 0;
-            Jogadores lJogador = pColisao.GetComponent<Jogadores>();
-            if (lJogador != null)
+            _TempoCurando += Time.deltaTime;
+        }
+
+        private void OnTriggerStay2D(Collider2D pColisao)
+        {
+            if (_TempoCurando > _TempoCurar)
             {
-                lJogador._BarraVida.Add(20);
+                _TempoCurando = 0;
+                Jogador lJogador = pColisao.GetComponent<Jogador>();
+                if (lJogador != null)
+                {
+                    lJogador._BarraVida.Add(20);
+                }
             }
         }
     }

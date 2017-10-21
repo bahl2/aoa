@@ -1,83 +1,85 @@
 ﻿using ArcadePUCCampinas;
-using UnityEngine;
 
-public class ControleMiguel : Jogadores
+namespace Assets.Scripts.Jogadores
 {
-    private bool _BotaoVoo;
-
-    public void Pousa()
+    public class ControleMiguel : Jogador
     {
-        _Acao = EAcoes.Pousando;
-        _VelocidadeAtual = 0;
-    }
+        private bool _BotaoVoo;
 
-    public void Voa()
-    {
-        _Acao = EAcoes.Voando;
-        _VelocidadeAtual = _Velocidade * 2;
-    }
+        private void LevantaVoo()
+        {
+            _Acao = EAcoes.LevatandoVoo;
+            _VelocidadeAtual = 0;
+        }
 
-    internal override void Start()
-    {
-        base.Start();
-        Para();
-    }
+        internal override void Start()
+        {
+            base.Start();
+            Para();
+        }
 
-    internal override void Update()
-    {
-        if (Ativo)
+        internal override void Update()
         {
             base.Update();
-            _Eixo.y = InputArcade.Eixo(0, EEixo.VERTICAL);
-            _Eixo.x = InputArcade.Eixo(0, EEixo.HORIZONTAL);
-            _BotaoCombo1 = InputArcade.Apertou(0, EControle.AZUL) || Input.GetKeyDown(KeyCode.F9);
-            _BotaoCombo2 = InputArcade.Apertou(0, EControle.AMARELO) || Input.GetKeyDown(KeyCode.F10);
-            _BotaoCombo3 = InputArcade.Apertou(0, EControle.BRANCO) || Input.GetKeyDown(KeyCode.F11);
-            _BotaoVoo = InputArcade.Apertou(0, EControle.VERDE) || Input.GetKeyDown(KeyCode.F12);
+            if (Ativo)
+            {
+                _Eixo.y = InputArcade.Eixo(0, EEixo.VERTICAL);
+                _Eixo.x = InputArcade.Eixo(0, EEixo.HORIZONTAL);
+                _BotaoCombo1 = InputArcade.Apertou(0, EControle.AZUL);
+                _BotaoCombo2 = InputArcade.Apertou(0, EControle.AMARELO);
+                _BotaoCombo3 = InputArcade.Apertou(0, EControle.BRANCO);
+                _BotaoVoo = InputArcade.Apertou(0, EControle.VERDE);
+            }
         }
-    }
 
-    internal override void Animacao()
-    {
-        base.Animacao();
-        switch (_Acao)
+        internal override void Animacao()
         {
-            case EAcoes.LevatandoVoo:
-                {
-                    LevantaVoo();
-                    break;
-                }
-            case EAcoes.Voando:
-                {
-                    if (_BotaoVoo || _BarraMana._Atual <= 0)
+            base.Animacao();
+            switch (_Acao)
+            {
+                case EAcoes.LevatandoVoo:
+                    {
+                        LevantaVoo();
+                        break;
+                    }
+                case EAcoes.Voando:
+                    {
+                        if (_BotaoVoo || _BarraMana._Atual <= 0)
+                        {
+                            Pousa();
+                        }
+                        else
+                        {
+                            Voa();
+                        }
+                        break;
+                    }
+                case EAcoes.Pousando:
                     {
                         Pousa();
+                        break;
                     }
-                    else
+                case EAcoes.Andando:
+                case EAcoes.Parado:
+                case EAcoes.Correndo:
                     {
-                        Voa();
+                        if (_BotaoVoo && _BarraMana._Atual > 0)
+                            LevantaVoo();
+                        break;
                     }
-                    break;
-                }
-            case EAcoes.Pousando:
-                {
-                    Pousa();
-                    break;
-                }
-            case EAcoes.Andando:
-            case EAcoes.Parado:
-            case EAcoes.Correndo:
-                {
-                    if (_BotaoVoo && _BarraMana._Atual > 0)
-                        LevantaVoo();
-                    break;
-                }
+            }
         }
-    }
 
-    private void LevantaVoo()
-    {
-        _Acao = EAcoes.LevatandoVoo;
-        _VelocidadeAtual = 0;
+        public void Pousa()
+        {
+            _Acao = EAcoes.Pousando;
+            _VelocidadeAtual = 0;
+        }
+
+        public void Voa()
+        {
+            _Acao = EAcoes.Voando;
+            _VelocidadeAtual = _Velocidade * 2;
+        }
     }
 }

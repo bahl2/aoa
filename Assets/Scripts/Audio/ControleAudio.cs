@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-public class ControleAudio : MonoBehaviour
+namespace Assets.Scripts.Audio
 {
-    private void Start()
+    public class ControleAudio : MonoBehaviour
     {
-        DontDestroyOnLoad(this);
+        private void Start()
+        {
+            DontDestroyOnLoad(this);
+        }
     }
 }

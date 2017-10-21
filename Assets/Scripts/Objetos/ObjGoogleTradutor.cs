@@ -1,4 +1,5 @@
-﻿using SimpleJSON;
+﻿using Assets.Scripts.Global;
+using SimpleJSON;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -30,12 +31,12 @@ namespace Assets.Scripts.Objetos
     [Serializable]
     public class GoogleTradutor
     {
-        public static string[] _Siglas = { "pt-BR", "en", "es", "hi", "ar", "pt-PT", "bn", "ru", "ja", "de", "ko", "fr", "it",
-            "th", "zh-CN", "tr", "vi", "sv" };
-        public string _Resposta;
         private string _IdiomaOrigem;
         private string _IdiomaDestino;
         private string _Texto;
+        public static string[] _Siglas = { "pt-BR", "en", "es", "hi", "ar", "pt-PT", "bn", "ru", "ja", "de", "ko", "fr", "it",
+            "th", "zh-CN", "tr", "vi", "sv" };
+        public string _Resposta;
 
         public GoogleTradutor(string pSiglaDestino, string pTexto, string pSiglaOrigem = "pt-BR")
         {

@@ -6,72 +6,75 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class CutScene : MonoBehaviour
+namespace Assets.Scripts.Global
 {
-    public static GameTags.ECenas ProximaCena
+    public class CutScene : MonoBehaviour
     {
-        set
+        [SerializeField]
+        private AudioSource _Audio;
+        [SerializeField]
+        private Text _Texto;
+        private static GameTags.ECenas _ProximaCena;
+        private static float _Segundos;
+        private static VideoClip _Video;
+        private VideoPlayer _VideoPlayer;
+
+        public static GameTags.ECenas ProximaCena
         {
-            _ProximaCena = value;
-            SceneManager.LoadScene(GameTags._Cenas[(int)GameTags.ECenas.CutScene]);
+            set
+            {
+                _ProximaCena = value;
+                SceneManager.LoadScene(GameTags._Cenas[(int)GameTags.ECenas.CutScene]);
+            }
         }
-    }
 
-    public static VideoClip Video
-    {
-        set
+        public static VideoClip Video
         {
-            _Video = value;
+            set
+            {
+                _Video = value;
+            }
         }
-    }
 
-    public static float Segundos
-    {
-        set
+        public static float Segundos
         {
-            _Segundos = value;
+            set
+            {
+                _Segundos = value;
+            }
         }
-    }
 
-    [SerializeField]
-    private AudioSource _Audio;
-    [SerializeField]
-    private Text _Texto;
-    private static GameTags.ECenas _ProximaCena;
-    private static float _Segundos;
-    private static VideoClip _Video;
-    private VideoPlayer _VideoPlayer;
-
-    private void Start()
-    {
-        if (_Segundos == 0)
+        private void Start()
         {
-            _Segundos = Convert.ToSingle(_Video.length);
+            if (_Segundos == 0)
+            {
+                _Segundos = Convert.ToSingle(_Video.length);
+            }
+            _VideoPlayer = GetComponent<VideoPlayer>();
+            StartCoroutine(CarregaVideo());
+            _Texto.CrossFadeAlpha(0, 5, true);
         }
-        _VideoPlayer = GetComponent<VideoPlayer>();
-        StartCoroutine(CarregaVideo());
-        _Texto.CrossFadeAlpha(0, 5, true);
-    }
 
-    private void Update()
-    {
-        if (InputArcade.Apertou(0, EControle.VERDE))
+        private void Update()
+        {
+            if (InputArcade.Apertou(0, EControle.VERDE))
+                SceneManager.LoadScene(GameTags._Cenas[(int)_ProximaCena]);
+        }
+
+        private IEnumerator CarregaVideo()
+        {
+            _VideoPlayer.clip = _Video;
+            _VideoPlayer.EnableAudioTrack(0, true);
+            _VideoPlayer.SetTargetAudioSource(0, _Audio);
+            _VideoPlayer.Prepare();
+            while (!_VideoPlayer.isPrepared)
+            {
+                yield return null;
+            }
+            _VideoPlayer.Play();
+            _Audio.Play();
+            yield return new WaitForSeconds(_Segundos);
             SceneManager.LoadScene(GameTags._Cenas[(int)_ProximaCena]);
-    }
-
-    private IEnumerator CarregaVideo()
-    {
-        _VideoPlayer.clip = _Video;
-        _VideoPlayer.EnableAudioTrack(0, true);
-        _VideoPlayer.SetTargetAudioSource(0, _Audio);
-        _VideoPlayer.Prepare();
-        while (!_VideoPlayer.isPrepared)
-        {
-            yield return null;
         }
-        _VideoPlayer.Play();
-        _Audio.Play();
-        yield return new WaitForSeconds(_Segundos);
-        SceneManager.LoadScene(GameTags._Cenas[(int)_ProximaCena]);
     }
 }

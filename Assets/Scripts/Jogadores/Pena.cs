@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 
-public class Pena : MonoBehaviour
+namespace Assets.Scripts.Jogadores
 {
-    [SerializeField]
-    private GameObject _Legenda;
-
-    private void OnTriggerEnter2D(Collider2D pColisao)
+    public class Pena : MonoBehaviour
     {
-        Jogadores lJogador = pColisao.GetComponent<Jogadores>();
-        if (lJogador != null)
+        [SerializeField]
+        private GameObject _Legenda;
+
+        private void OnTriggerEnter2D(Collider2D pColisao)
         {
-            _Legenda.SetActive(true);
-            lJogador._BarraMana.Add(lJogador._BarraMana._Maximo);
-            Destroy(gameObject);
+            Jogador lJogador = pColisao.GetComponent<Jogador>();
+            if (lJogador != null)
+            {
+                _Legenda.SetActive(true);
+                lJogador._BarraMana.Add(lJogador._BarraMana._Maximo);
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -1,31 +1,35 @@
 ﻿using ArcadePUCCampinas;
+using Assets.Scripts.Global;
 using UnityEngine;
 
-public class Legenda : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    private void Update()
+    public class Legenda : MonoBehaviour
     {
-        if (InputArcade.Apertou(0, EControle.VERDE))
+        private void Update()
         {
-            gameObject.SetActive(false);
+            if (InputArcade.Apertou(0, EControle.VERDE))
+            {
+                gameObject.SetActive(false);
+            }
         }
-    }
 
-    private void OnEnable()
-    {
-        Personagens[] lPersonagens = FindObjectsOfType<Personagens>();
-        foreach (Personagens lPersonagem in lPersonagens)
+        private void OnEnable()
         {
-            lPersonagem.Ativo = false;
+            Personagem[] lPersonagens = FindObjectsOfType<Personagem>();
+            foreach (Personagem lPersonagem in lPersonagens)
+            {
+                lPersonagem.Ativo = false;
+            }
         }
-    }
 
-    private void OnDisable()
-    {
-        Personagens[] lPersonagens = FindObjectsOfType<Personagens>();
-        foreach (Personagens lPersonagem in lPersonagens)
+        private void OnDisable()
         {
-            lPersonagem.Ativo = true;
+            Personagem[] lPersonagens = FindObjectsOfType<Personagem>();
+            foreach (Personagem lPersonagem in lPersonagens)
+            {
+                lPersonagem.Ativo = true;
+            }
         }
     }
 }

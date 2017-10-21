@@ -1,80 +1,83 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Outline))]
-public class ComponenteBase : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    public bool Focused
+    [RequireComponent(typeof(Outline))]
+    public class ComponenteBase : MonoBehaviour
     {
-        get
-        {
-            return _Focused;
-        }
-        set
-        {
-            _Focused = value;
-            GetComponent<Outline>().enabled = _Focused;
-        }
-    }
+        [SerializeField]
+        private bool _Focused;
+        [SerializeField]
+        private int _TabOrder;
 
-    public int TabOrder
-    {
-        get
+        public bool Focused
         {
-            return _TabOrder;
-        }
-        set
-        {
-            _TabOrder = value;
-        }
-    }
-
-    [SerializeField]
-    private bool _Focused;
-    [SerializeField]
-    private int _TabOrder;
-
-    public static void Focar(ComponenteBase[] pComponentes, int pInc, int pTabIndex = 0)
-    {
-        foreach (ComponenteBase lComponente in pComponentes)
-        {
-            if (pInc == 0)
+            get
             {
-                lComponente.Focused = pTabIndex == lComponente.TabOrder;
+                return _Focused;
             }
-            else
+            set
             {
-                if (lComponente.Focused)
+                _Focused = value;
+                GetComponent<Outline>().enabled = _Focused;
+            }
+        }
+
+        public int TabOrder
+        {
+            get
+            {
+                return _TabOrder;
+            }
+            set
+            {
+                _TabOrder = value;
+            }
+        }
+
+        public static void Focar(ComponenteBase[] pComponentes, int pInc, int pTabIndex = 0)
+        {
+            foreach (ComponenteBase lComponente in pComponentes)
+            {
+                if (pInc == 0)
                 {
-                    if (lComponente.TabOrder + pInc > pComponentes.Length - 1)
+                    lComponente.Focused = pTabIndex == lComponente.TabOrder;
+                }
+                else
+                {
+                    if (lComponente.Focused)
                     {
-                        Focar(pComponentes, 0);
+                        if (lComponente.TabOrder + pInc > pComponentes.Length - 1)
+                        {
+                            Focar(pComponentes, 0);
+                        }
+                        else if (lComponente.TabOrder + pInc < 0)
+                        {
+                            Focar(pComponentes, pComponentes.Length - 1);
+                        }
+                        else
+                        {
+                            Focar(pComponentes, 0, lComponente.TabOrder + pInc);
+                        }
+                        break;
                     }
-                    else if (lComponente.TabOrder + pInc < 0)
-                    {
-                        Focar(pComponentes, pComponentes.Length - 1);
-                    }
-                    else
-                    {
-                        Focar(pComponentes, 0, lComponente.TabOrder + pInc);
-                    }
-                    break;
                 }
             }
         }
-    }
 
-    public static ComponenteBase Focado(ComponenteBase[] pComponentes)
-    {
-        ComponenteBase lComponenteFocado = null;
-        foreach (ComponenteBase lComponente in pComponentes)
+        public static ComponenteBase Focado(ComponenteBase[] pComponentes)
         {
-            if (lComponente.Focused)
+            ComponenteBase lComponenteFocado = null;
+            foreach (ComponenteBase lComponente in pComponentes)
             {
-                lComponenteFocado = lComponente;
-                //break;
+                if (lComponente.Focused)
+                {
+                    lComponenteFocado = lComponente;
+                    break;
+                }
             }
+            return lComponenteFocado;
         }
-        return lComponenteFocado;
     }
 }

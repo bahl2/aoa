@@ -1,28 +1,31 @@
 ﻿using UnityEngine;
 
-public class TransportaCenario : MonoBehaviour
+namespace Assets.Scripts.Global
 {
-    [SerializeField]
-    private Transform _CenarioDestino;
-    [SerializeField]
-    private ETransporte _TipoTransporte;
-    private Camera _Camera;
-
-    private enum ETransporte
+    public class TransportaCenario : MonoBehaviour
     {
-        Ida,
-        Volta
-    }
+        [SerializeField]
+        private Transform _CenarioDestino;
+        [SerializeField]
+        private ETransporte _TipoTransporte;
+        private Camera _Camera;
 
-    private void Start()
-    {
-        _Camera = Camera.main;
-    }
+        private enum ETransporte
+        {
+            Ida,
+            Volta
+        }
 
-    private void OnTriggerEnter2D(Collider2D pColisao)
-    {
-        pColisao.transform.position = _CenarioDestino.position;
-        _Camera.GetComponent<SegueObjeto>()._Limita = _TipoTransporte == ETransporte.Volta;
-        _Camera.transform.position = _CenarioDestino.position + new Vector3(0, 0, _Camera.transform.position.z);
+        private void Start()
+        {
+            _Camera = Camera.main;
+        }
+
+        private void OnTriggerEnter2D(Collider2D pColisao)
+        {
+            pColisao.transform.position = _CenarioDestino.position;
+            _Camera.GetComponent<SegueObjeto>()._Limita = _TipoTransporte == ETransporte.Volta;
+            _Camera.transform.position = _CenarioDestino.position + new Vector3(0, 0, _Camera.transform.position.z);
+        }
     }
 }

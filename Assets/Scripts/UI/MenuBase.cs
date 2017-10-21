@@ -1,34 +1,36 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MenuBase : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-
-    public bool Ativo
+    public class MenuBase : MonoBehaviour
     {
-        get
+        [SerializeField]
+        internal ComponenteBase[] _Componentes;
+        internal bool _Ativo;
+
+        public bool Ativo
         {
-            return _Ativo;
-        }
-        set
-        {
-            StartCoroutine(Ativa(value));
-            if (value)
+            get
             {
-                ComponenteBase.Focar(_Componentes, 0);
-                transform.parent.GetComponent<Canvas>().sortingOrder = 1;
+                return _Ativo;
             }
-            else transform.parent.GetComponent<Canvas>().sortingOrder = 0;
+            set
+            {
+                StartCoroutine(Ativa(value));
+                if (value)
+                {
+                    ComponenteBase.Focar(_Componentes, 0);
+                    transform.parent.GetComponent<Canvas>().sortingOrder = 1;
+                }
+                else transform.parent.GetComponent<Canvas>().sortingOrder = 0;
+            }
         }
-    }
 
-    [SerializeField]
-    internal ComponenteBase[] _Componentes;
-    internal bool _Ativo;
-
-    internal virtual IEnumerator Ativa(bool pValor)
-    {
-        yield return new WaitForSeconds(0.5f);
-        _Ativo = pValor;
+        internal virtual IEnumerator Ativa(bool pValor)
+        {
+            yield return new WaitForSeconds(0.5f);
+            _Ativo = pValor;
+        }
     }
 }

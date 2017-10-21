@@ -1,56 +1,59 @@
 ﻿using UnityEngine;
 
-public class ControleCaveira : Inimigos
+namespace Assets.Scripts.Inimigos
 {
-    internal override void MovimentoIA()
+    public class ControleCaveira : Inimigo
     {
-        base.MovimentoIA();
-        switch (_Acao)
+        private void Ataca()
         {
-            case EAcoes.Atacando:
-                {
-                    if (_Bateu == _Jogador.transform)
-                    {
-                        Ataca();
-                    }
-                    else if (JogadorPerto())
-                    {
-                        Persegue();
-                    }
-                    else
-                    {
-                        Patrulha();
-                    }
-                    break;
-                }
-            case EAcoes.Perseguindo:
-                {
-                    if (_Bateu == _Jogador.transform)
-                    {
-                        Ataca();
-                    }
-                    break;
-                }
+            _Acao = EAcoes.Atacando;
+            _VelocidadeAtual = 0;
+            if (_TempoAtacando > _TempoAtaque)
+            {
+                _TempoAtacando = 0;
+                _Jogador._BarraVida.Add(-10);
+                Vector3 lPosicaoJogador = _Jogador.transform.position;
+                lPosicaoJogador.x += -(int)_Jogador._Direcao;
+                _Jogador.transform.position = lPosicaoJogador;
+            }
         }
-    }
 
-    internal override void Persegue()
-    {
-        base.Persegue();
-        _Eixo = (_Jogador.transform.position - transform.position).normalized;
-    }
-
-    private void Ataca()
-    {
-        _Acao = EAcoes.Atacando;
-        _VelocidadeAtual = 0;
-        if (_TempoAtacando > _TempoAtaque)
+        internal override void MovimentoIA()
         {
-            _TempoAtacando = 0;
-            _Jogador._BarraVida.Add(-10);
-            Vector3 lPosicaoJogador = _Jogador.transform.position;
-            lPosicaoJogador.x += -(int)_Jogador._Direcao;
-            _Jogador.transform.position = lPosicaoJogador;
+            base.MovimentoIA();
+            switch (_Acao)
+            {
+                case EAcoes.Atacando:
+                    {
+                        if (_Bateu == _Jogador.transform)
+                        {
+                            Ataca();
+                        }
+                        else if (JogadorPerto())
+                        {
+                            Persegue();
+                        }
+                        else
+                        {
+                            Patrulha();
+                        }
+                        break;
+                    }
+                case EAcoes.Perseguindo:
+                    {
+                        if (_Bateu == _Jogador.transform)
+                        {
+                            Ataca();
+                        }
+                        break;
+                    }
+            }
+        }
+
+        internal override void Persegue()
+        {
+            base.Persegue();
+            _Eixo = (_Jogador.transform.position - transform.position).normalized;
         }
     }
 }

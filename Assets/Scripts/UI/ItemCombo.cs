@@ -1,31 +1,34 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemCombo : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    public bool Focused
+    public class ItemCombo : MonoBehaviour
     {
-        get
+        [SerializeField]
+        private bool _Focused;
+        [SerializeField]
+        private string _Value;
+
+        public bool Focused
         {
-            return _Focused;
+            get
+            {
+                return _Focused;
+            }
+            set
+            {
+                _Focused = value;
+                GetComponent<Outline>().enabled = _Focused;
+            }
         }
-        set
+
+        public string Value
         {
-            _Focused = value;
-            GetComponent<Outline>().enabled = _Focused;
+            get
+            {
+                return _Value;
+            }
         }
     }
-
-    public string Value
-    {
-        get
-        {
-            return _Value;
-        }
-    }
-
-    [SerializeField]
-    private string _Value;
-    [SerializeField]
-    private bool _Focused;
 }
