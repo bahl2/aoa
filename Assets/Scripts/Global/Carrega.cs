@@ -22,19 +22,23 @@ namespace Assets.Scripts.Global
 
         private void Start()
         {
-            StartCoroutine(CarregaCena(_Cena));
+            StartCoroutine(CarregaCena(_Cena, _Progresso));
         }
 
-        private IEnumerator CarregaCena(string pCena)
+        public static IEnumerator CarregaCena(string pCena, Slider pProgresso = null)
         {
             AsyncOperation lCarrega = SceneManager.LoadSceneAsync(pCena);//carrega a cena
             lCarrega.allowSceneActivation = false;
+            if (pProgresso != null)
+                pProgresso.gameObject.SetActive(true);
             while (!lCarrega.isDone)//enquanto nao estiver carregado aguarda 
             {
-                _Progresso.value = lCarrega.progress;
+                if (pProgresso != null)
+                    pProgresso.value = lCarrega.progress;
                 if (lCarrega.progress == 0.9f)
                 {
-                    _Progresso.value = 1f;
+                    if (pProgresso != null)
+                        pProgresso.value = 1f;
                     lCarrega.allowSceneActivation = true;
                 }
                 yield return null;

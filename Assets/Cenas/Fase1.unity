@@ -13838,7 +13838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 674427336}
   m_Layer: 5
-  m_Name: Mapa
+  m_Name: MiniMapa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14425,7 +14425,7 @@ Transform:
   m_LocalScale: {x: 2.059871, y: 2.7502406, z: 1}
   m_Children: []
   m_Father: {fileID: 1670735180}
-  m_RootOrder: 87
+  m_RootOrder: 88
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1659044879 stripped
 Transform:
@@ -14445,7 +14445,7 @@ GameObject:
   - component: {fileID: 1660360032}
   - component: {fileID: 1660360031}
   m_Layer: 5
-  m_Name: Macara
+  m_Name: Mascara
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14736,8 +14736,8 @@ Transform:
   - {fileID: 202883751}
   - {fileID: 912636}
   - {fileID: 1754869958}
-  - {fileID: 1654889113}
   - {fileID: 2102500982}
+  - {fileID: 1654889113}
   - {fileID: 584227596}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -21680,7 +21680,7 @@ Transform:
   m_LocalScale: {x: 1.877462, y: 2.6052418, z: 1.063457}
   m_Children: []
   m_Father: {fileID: 1670735180}
-  m_RootOrder: 88
+  m_RootOrder: 87
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &2102500983
 EdgeCollider2D:

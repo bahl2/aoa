@@ -14,6 +14,8 @@ namespace Assets.Scripts.Global
         private AudioSource _Audio;
         [SerializeField]
         private Text _Texto;
+        [SerializeField]
+        private Slider _Progresso;
         private static GameTags.ECenas _ProximaCena;
         private static float _Segundos;
         private static VideoClip _Video;
@@ -53,12 +55,13 @@ namespace Assets.Scripts.Global
             _VideoPlayer = GetComponent<VideoPlayer>();
             StartCoroutine(CarregaVideo());
             _Texto.CrossFadeAlpha(0, 5, true);
+            _Progresso.gameObject.SetActive(false);
         }
 
         private void Update()
         {
             if (InputArcade.Apertou(0, EControle.VERDE))
-                SceneManager.LoadScene(GameTags._Cenas[(int)_ProximaCena]);
+                StartCoroutine(Carrega.CarregaCena(GameTags._Cenas[(int)_ProximaCena], _Progresso));
         }
 
         private IEnumerator CarregaVideo()
@@ -74,7 +77,7 @@ namespace Assets.Scripts.Global
             _VideoPlayer.Play();
             _Audio.Play();
             yield return new WaitForSeconds(_Segundos);
-            SceneManager.LoadScene(GameTags._Cenas[(int)_ProximaCena]);
+            StartCoroutine(Carrega.CarregaCena(GameTags._Cenas[(int)_ProximaCena], _Progresso));
         }
     }
 }

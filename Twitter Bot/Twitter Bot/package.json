@@ -1,9 +1,0 @@
-{
-  "name": "twitter-bot",
-  "version": "0.0.0",
-  "description": "Twitter Bot",
-  "main": "server.js",
-  "author": {
-    "name": "mathe"
-  }
-}
