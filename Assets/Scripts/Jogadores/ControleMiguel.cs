@@ -1,4 +1,5 @@
 ﻿using ArcadePUCCampinas;
+using Assets.Scripts.Audio;
 
 namespace Assets.Scripts.Jogadores
 {
@@ -80,6 +81,12 @@ namespace Assets.Scripts.Jogadores
         {
             _Acao = EAcoes.Voando;
             _VelocidadeAtual = _Velocidade * 2;
+        }
+
+        public void Passo()
+        {
+            _ControleSons.clip = ControleAudio._Passo;
+            _ControleSons.Play();
         }
     }
 }

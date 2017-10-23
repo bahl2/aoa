@@ -20,6 +20,7 @@ namespace Assets.Scripts.Inimigos
         private void OnCollisionEnter2D(Collision2D pColisao)
         {
             _Bateu = pColisao.transform;
+            _VelocidadeAtual = 0;
         }
 
         private void OnCollisionExit2D(Collision2D pColisao)

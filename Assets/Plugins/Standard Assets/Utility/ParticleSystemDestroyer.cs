@@ -1,5 +1,4 @@
-using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -36,7 +35,6 @@ namespace UnityStandardAssets.Utility
             {
                 yield return null;
             }
-            Debug.Log("stopping " + name);
 
             // turn off emission
             foreach (var system in systems)

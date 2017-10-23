@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Assets.Scripts.Inimigos
+﻿namespace Assets.Scripts.Inimigos
 {
     public class ControleCaveira : Inimigo
     {
@@ -12,9 +10,6 @@ namespace Assets.Scripts.Inimigos
             {
                 _TempoAtacando = 0;
                 _Jogador._BarraVida.Add(-10);
-                Vector3 lPosicaoJogador = _Jogador.transform.position;
-                lPosicaoJogador.x += -(int)_Jogador._Direcao;
-                _Jogador.transform.position = lPosicaoJogador;
             }
         }
 
