@@ -132,6 +132,7 @@
      <None Include="Assets\Plugins\Lava_Flowing_Shader\ReadMe.txt" />
      <None Include="Assets\Plugins\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Plugins\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
+     <None Include="Assets\Documentos Roteiro\Narração - Falas.txt" />
      <None Include="Assets\Plugins\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>C:/Users/Bah/Documents/game/aoa/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
