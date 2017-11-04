@@ -20,6 +20,8 @@ namespace Assets.Scripts.Global
         private static float _Segundos;
         private static VideoClip _Video;
         private VideoPlayer _VideoPlayer;
+        private float _Tempo;
+        private bool _CarregandoCena;
 
         public static GameTags.ECenas ProximaCena
         {
@@ -56,12 +58,40 @@ namespace Assets.Scripts.Global
             StartCoroutine(CarregaVideo());
             _Texto.CrossFadeAlpha(0, 5, true);
             _Progresso.gameObject.SetActive(false);
+            _CarregandoCena = false;
         }
 
         private void Update()
         {
-            if (InputArcade.Apertou(0, EControle.VERDE))
-                StartCoroutine(Carrega.CarregaCena(GameTags._Cenas[(int)_ProximaCena], _Progresso));
+            if (!_CarregandoCena)
+            {
+                if ((InputArcade.Apertou(0, EControle.VERDE) && Time.timeScale == 1) || _Tempo >= _Segundos)
+                {
+                    StartCoroutine(Carrega.CarregaCena(GameTags._Cenas[(int)_ProximaCena], _Progresso));
+                    _CarregandoCena = true;
+                }
+            }
+            if (Time.timeScale == 1)
+            {
+                _Tempo += Time.deltaTime;
+                if (_Tempo < _Segundos)
+                {
+                    _VideoPlayer.Play();
+                    _Audio.Play();
+                }
+                else
+                {
+                    _VideoPlayer.Stop();
+                    _Audio.Stop();
+                }
+            }
+            else
+            {
+                if (_Tempo > 0)
+                    _Tempo -= Time.deltaTime;
+                _VideoPlayer.Pause();
+                _Audio.Pause();
+            }
         }
 
         private IEnumerator CarregaVideo()
@@ -76,8 +106,6 @@ namespace Assets.Scripts.Global
             }
             _VideoPlayer.Play();
             _Audio.Play();
-            yield return new WaitForSeconds(_Segundos);
-            StartCoroutine(Carrega.CarregaCena(GameTags._Cenas[(int)_ProximaCena], _Progresso));
         }
     }
 }

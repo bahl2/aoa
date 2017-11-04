@@ -28,7 +28,7 @@ namespace Assets.Scripts.UI
 
         private void Update()
         {
-            if (_Ativo)
+            if (_Ativo && Time.timeScale == 1)
             {
                 if (InputArcade.Apertou(0, EControle.PRETO))
                 {

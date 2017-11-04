@@ -1,5 +1,7 @@
 ﻿using ArcadePUCCampinas;
 using Assets.Scripts.Audio;
+using System.Collections;
+using UnityEngine;
 
 namespace Assets.Scripts.Jogadores
 {
@@ -13,9 +15,23 @@ namespace Assets.Scripts.Jogadores
             _VelocidadeAtual = 0;
         }
 
+        private IEnumerator DecMana()
+        {
+            while (true)
+            {
+                if (_Acao == EAcoes.Voando)
+                {
+                    yield return new WaitForSeconds(3);
+                    _BarraMana.Add(-10);
+                }
+                yield return new WaitForSeconds(2);
+            }
+        }
+
         internal override void Start()
         {
             base.Start();
+            StartCoroutine(DecMana());
             Para();
         }
 

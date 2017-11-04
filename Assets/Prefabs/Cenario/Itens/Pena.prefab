@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114392461534271418}
   - component: {fileID: 95689208633224266}
   - component: {fileID: 58012142617668950}
-  m_Layer: 14
+  m_Layer: 9
   m_Name: Pena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143812723517470}
   m_LocalRotation: {x: -0, y: -0, z: 0.2541757, w: -0.9671581}
-  m_LocalPosition: {x: 85.582, y: -25.091, z: 0}
+  m_LocalPosition: {x: 73, y: -4, z: 0}
   m_LocalScale: {x: 0.27493238, y: 0.27493235, z: 0.27493235}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,9 +55,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.016613642, y: 0.009380224}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1.0041788
 --- !u!95 &95689208633224266
 Animator:
   serializedVersion: 3
@@ -87,12 +87,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Legenda: {fileID: 0}
-  _Fala: "Sauda\xE7\xF5es meu amigo,\\nComo n\xE3o sou de viagens, tive um pressentimento
-    que voc\xEA iria precisar de alguma ajuda, por sorte descobri que ao entrar no
-    mundo humano alguns de seus poderes divinos s\xE3o limitados ou impossivel de
-    se usar, como suas asas, lhe enviei esse oobjeto que permite voar por alguns minutos.\\nPS:
-    Fa\xE7a bom uso!\\nContamos com voc\xEA! "
-  _Texto: {fileID: 0}
 --- !u!212 &212129218017524960
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -124,7 +118,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1920135595
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4fe2365e62ea1d940bb59f5b518853c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
