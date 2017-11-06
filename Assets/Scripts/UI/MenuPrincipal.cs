@@ -22,31 +22,34 @@ namespace Assets.Scripts.UI
         {
             if (_Ativo && Time.timeScale == 1)
             {
-                if (InputArcade.Apertou(0, EControle.PRETO))
+                if (CFG._Plataforma == CFG.EPlataforma.Arcade)
                 {
-                    BotaoSair();
-                }
-                if (InputArcade.Apertou(0, EControle.BAIXO))
-                {
-                    ComponenteBase.Focar(_Componentes, 1);
-                }
-                if (InputArcade.Apertou(0, EControle.CIMA))
-                {
-                    ComponenteBase.Focar(_Componentes, -1);
-                }
-                if (InputArcade.Apertou(0, EControle.VERDE) || Input.GetKeyDown(KeyCode.Return))
-                {
-                    if (ComponenteBase.Focado(_Componentes) == _BotaoJogar)
-                    {
-                        BotaoJogar();
-                    }
-                    else if (ComponenteBase.Focado(_Componentes) == _BotaoOpcoes)
-                    {
-                        BotaoOpcoes();
-                    }
-                    else if (ComponenteBase.Focado(_Componentes) == _BotaoSair)
+                    if (InputArcade.Apertou(0, EControle.PRETO))
                     {
                         BotaoSair();
+                    }
+                    if (InputArcade.Apertou(0, EControle.BAIXO))
+                    {
+                        ComponenteBase.Focar(_Componentes, 1);
+                    }
+                    if (InputArcade.Apertou(0, EControle.CIMA))
+                    {
+                        ComponenteBase.Focar(_Componentes, -1);
+                    }
+                    if (InputArcade.Apertou(0, EControle.VERDE) || Input.GetKeyDown(KeyCode.Return))
+                    {
+                        if (ComponenteBase.Focado(_Componentes) == _BotaoJogar)
+                        {
+                            BotaoJogar();
+                        }
+                        else if (ComponenteBase.Focado(_Componentes) == _BotaoOpcoes)
+                        {
+                            BotaoOpcoes();
+                        }
+                        else if (ComponenteBase.Focado(_Componentes) == _BotaoSair)
+                        {
+                            BotaoSair();
+                        }
                     }
                 }
             }

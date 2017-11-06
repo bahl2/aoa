@@ -64,5 +64,13 @@ namespace Assets.Scripts.UI
             lProximoItem.Focused = true;
             return lProximoItem;
         }
+
+        public void Focar(ItemCombo pItem)
+        {
+            foreach (ItemCombo lItem in _Itens)
+            {
+                lItem.Focused = pItem == lItem;
+            }
+        }
     }
 }

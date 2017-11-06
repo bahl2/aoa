@@ -57,7 +57,11 @@ namespace Assets.Scripts.Global
             #region Miguel
             LevatandoVoo,
             Voando,
-            Pousando
+            Pousando,
+            #endregion
+            #region Espiritos
+            Aparecendo,
+            Flutuando
             #endregion
         }
 
@@ -72,20 +76,26 @@ namespace Assets.Scripts.Global
 
         internal virtual void Update()
         {
-            if (_Eixo.x < 0)
-                _Direcao = EDirecao.Direita;
-            else if (_Eixo.x > 0)
-                _Direcao = EDirecao.Esquerda;
-            Vector3 lScala = transform.localScale;
-            lScala.x = (int)_Direcao;
-            transform.localScale = lScala;
+            if (_Controle != null)
+            {
+                if (_Eixo.x < 0)
+                    _Direcao = EDirecao.Direita;
+                else if (_Eixo.x > 0)
+                    _Direcao = EDirecao.Esquerda;
+                Vector3 lScala = transform.localScale;
+                lScala.x = (int)_Direcao;
+                transform.localScale = lScala;
+            }
             if (Ativo)
             {
-                if (_BarraVida.gameObject.activeSelf)
+                if (_BarraVida != null)
                 {
-                    if (_BarraVida._Atual <= 0)
+                    if (_BarraVida.gameObject.activeSelf)
                     {
-                        Morre();
+                        if (_BarraVida._Atual <= 0)
+                        {
+                            Morre();
+                        }
                     }
                 }
             }
@@ -94,7 +104,7 @@ namespace Assets.Scripts.Global
 
         internal virtual void FixedUpdate()
         {
-            if (Ativo)
+            if (Ativo && _Controle != null)
                 _Controle.velocity = _Eixo * _VelocidadeAtual * Time.fixedDeltaTime;
         }
 

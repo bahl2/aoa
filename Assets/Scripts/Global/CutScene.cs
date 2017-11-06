@@ -50,13 +50,19 @@ namespace Assets.Scripts.Global
 
         private void Start()
         {
+            if (CFG._Plataforma == CFG.EPlataforma.Arcade)
+                _Texto.text = "Verde ->  para pular";
+            else
+                _Texto.text = "Space ->  para pular";
+            _Texto.CrossFadeAlpha(0, 5, true);
+            Cursor.visible = false;
             if (_Segundos == 0)
             {
                 _Segundos = Convert.ToSingle(_Video.length);
             }
             _VideoPlayer = GetComponent<VideoPlayer>();
             StartCoroutine(CarregaVideo());
-            _Texto.CrossFadeAlpha(0, 5, true);
+
             _Progresso.gameObject.SetActive(false);
             _CarregandoCena = false;
         }

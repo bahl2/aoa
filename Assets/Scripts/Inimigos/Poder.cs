@@ -7,6 +7,8 @@ namespace Assets.Scripts.Inimigos
     {
         [SerializeField]
         private bool _Jogador;
+        [SerializeField]
+        private float _Dano;
         public float _Velocidade;
         public Rigidbody2D _Controle;
 
@@ -23,7 +25,7 @@ namespace Assets.Scripts.Inimigos
                 Inimigo lInimigo = pColisao.GetComponent<Inimigo>();
                 if (lInimigo != null)
                 {
-                    lInimigo._BarraVida.Add(-10);
+                    lInimigo._BarraVida.Add(-_Dano);
                     Destroy(gameObject);
                 }
             }
@@ -32,7 +34,7 @@ namespace Assets.Scripts.Inimigos
                 Jogador lJogador = pColisao.GetComponent<Jogador>();
                 if (lJogador != null)
                 {
-                    lJogador._BarraVida.Add(-10);
+                    lJogador._BarraVida.Add(-_Dano);
                     Destroy(gameObject);
                 }
             }

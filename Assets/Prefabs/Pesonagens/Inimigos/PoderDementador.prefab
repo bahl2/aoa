@@ -79,7 +79,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9533333, y: 0.80333334}
+    oldSize: {x: 1.43, y: 1.205}
     newSize: {x: 0.9533333, y: 0.80333334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -188,9 +188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab36b6088514be4fb18858b28900cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Jogador: 0
+  _Dano: 10
   _Velocidade: 4.2
   _Controle: {fileID: 0}
-  _Jogador: 0
 --- !u!212 &212277060961638718
 SpriteRenderer:
   m_ObjectHideFlags: 1

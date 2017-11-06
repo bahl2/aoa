@@ -5,15 +5,14 @@ namespace ArcadePUCCampinas
 {
     public class ArcadeJogo : Singleton<ArcadeJogo>
     {
-        private bool _noMenu;
+        public static bool _noMenu;
         private bool _trocaControles = false;
-        private Transform _menu;
+        private static Transform _menu;
 
         void Awake()
         {
             InputArcade.Inicializar();
             Screen.fullScreen = true;
-            Cursor.visible = false;
             Application.runInBackground = true;
             _noMenu = false;
             _menu = transform.Find("Menu");
@@ -22,14 +21,7 @@ namespace ArcadePUCCampinas
 
         void Update()
         {
-            if (!_noMenu)
-            {
-                if (InputArcade.Apertou(0, EControle.MENU))
-                {
-                    MostrarMenu();
-                }
-            }
-            else
+            if (_noMenu)
             {
                 // se pressionar de novo, sai do jogo
                 if (InputArcade.Apertou(0, EControle.VERDE) || InputArcade.Apertou(1, EControle.VERDE))
@@ -63,7 +55,7 @@ namespace ArcadePUCCampinas
             InputArcade.Atualizar();
         }
 
-        void MostrarMenu()
+        public static void MostrarMenu()
         {
             // mostra menu e pausa o tempo do jogo
             _noMenu = true;

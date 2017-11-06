@@ -33,7 +33,14 @@ namespace Assets.Scripts.Inimigos
             base.Start();
             _Jogador = FindObjectOfType<Jogador>();
             _Acao = EAcoes.Patrulhando;
-            _Eixo = transform.TransformDirection(Vector2.right);
+            if (_Direcao == EDirecao.Direita)
+            {
+                _Eixo = transform.TransformDirection(Vector2.left);
+            }
+            else
+            {
+                _Eixo = transform.TransformDirection(Vector2.right);
+            }
             _TempoPatrulhando = 0;
             _TempoAtacando = 0;
             _Bateu = null;
@@ -42,11 +49,14 @@ namespace Assets.Scripts.Inimigos
         internal override void Update()
         {
             base.Update();
-            if (Ativo)
+            if (Ativo && _Controle != null)
             {
-                Vector3 lScala = transform.localScale;
-                lScala.x = (int)_Direcao;
-                _BarraVida.transform.localScale = lScala;
+                if (_BarraVida != null)
+                {
+                    Vector3 lScala = transform.localScale;
+                    lScala.x = (int)_Direcao;
+                    _BarraVida.transform.localScale = lScala;
+                }
                 MovimentoIA();
             }
             else _VelocidadeAtual = 0;

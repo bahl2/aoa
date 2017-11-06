@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Objetos;
+﻿using ArcadePUCCampinas;
+using Assets.Scripts.Objetos;
 using Assets.Scripts.UI;
 using System;
 using System.Collections;
@@ -18,10 +19,19 @@ namespace Assets.Scripts.Global
         private Canvas _TelaCarregando;
         [SerializeField]
         private MenuPrincipal _MenuPrincipal;
+        [SerializeField]
+        private EPlataforma _PlataformaJogo;
         private Slider _Progresso;
         private Text[] _TextosMenuPrincipal;
         private Text[] _TextosMenuOpcoes;
         private List<string> _Textos;
+        public static EPlataforma _Plataforma;
+
+        public enum EPlataforma
+        {
+            Arcade,
+            PC
+        }
 
         public EIdiomas Idioma
         {
@@ -63,6 +73,8 @@ namespace Assets.Scripts.Global
 
         private void Awake()
         {
+            _Plataforma = _PlataformaJogo;
+            Cursor.visible = _Plataforma == EPlataforma.PC;
             _Textos = new List<string>();
             AudioListener.volume = Volume;
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -79,6 +91,17 @@ namespace Assets.Scripts.Global
             }
             CFGInicial();
             StartCoroutine(TraduzTextos());
+        }
+
+        private void Update()
+        {
+            if (!ArcadeJogo._noMenu && _Plataforma == EPlataforma.Arcade)
+            {
+                if (InputArcade.Apertou(0, EControle.MENU))
+                {
+                    ArcadeJogo.MostrarMenu();
+                }
+            }
         }
 
         private IEnumerator TraduzTextos()

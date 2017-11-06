@@ -6,6 +6,10 @@ namespace Assets.Scripts.Global
 {
     public class ControleFase : MonoBehaviour
     {
+        [SerializeField]
+        private GameObject _BotoesArcade;
+        [SerializeField]
+        private GameObject _BotoesPC;
         private Inimigo[] _Inimigos;
         public Jogador[] _Jogadores;
         public GameObject _Legenda;
@@ -13,7 +17,8 @@ namespace Assets.Scripts.Global
         private void Start()
         {
             _Legenda.SetActive(false);
-            //Na fase 1 o jogador começa indo para esquerda
+            _BotoesArcade.SetActive(CFG._Plataforma == CFG.EPlataforma.Arcade);
+            _BotoesPC.SetActive(CFG._Plataforma == CFG.EPlataforma.PC);
             _Jogadores = FindObjectsOfType<Jogador>();
             foreach (Jogador lJogador in _Jogadores)
             {

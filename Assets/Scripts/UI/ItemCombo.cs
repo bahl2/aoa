@@ -9,6 +9,16 @@ namespace Assets.Scripts.UI
         private bool _Focused;
         [SerializeField]
         private string _Value;
+        [SerializeField]
+        private ComponenteCombo _Combo;
+
+        public ComponenteCombo Combo
+        {
+            get
+            {
+                return _Combo;
+            }
+        }
 
         public bool Focused
         {

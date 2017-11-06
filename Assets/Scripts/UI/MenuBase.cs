@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Global;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.UI
@@ -20,7 +21,10 @@ namespace Assets.Scripts.UI
                 StartCoroutine(Ativa(value));
                 if (value)
                 {
-                    ComponenteBase.Focar(_Componentes, 0);
+                    if (CFG._Plataforma == CFG.EPlataforma.Arcade)
+                        ComponenteBase.Focar(_Componentes, 0);
+                    else
+                        ComponenteBase.Focar(_Componentes, 0, -1);
                     transform.parent.GetComponent<Canvas>().sortingOrder = 1;
                 }
                 else transform.parent.GetComponent<Canvas>().sortingOrder = 0;

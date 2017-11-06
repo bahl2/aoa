@@ -30,60 +30,63 @@ namespace Assets.Scripts.UI
         {
             if (_Ativo && Time.timeScale == 1)
             {
-                if (InputArcade.Apertou(0, EControle.PRETO))
+                if (CFG._Plataforma == CFG.EPlataforma.Arcade)
                 {
-                    BotaoVoltarMenu();
-                }
-                if (InputArcade.Apertou(0, EControle.BAIXO))
-                {
-                    ComponenteBase.Focar(_Componentes, 1);
-                }
-                if (InputArcade.Apertou(0, EControle.CIMA))
-                {
-                    ComponenteBase.Focar(_Componentes, -1);
-                }
-                if (ComponenteBase.Focado(_Componentes) == _Volume)
-                {
-                    if (InputArcade.Apertado(0, EControle.DIREITA))
-                    {
-                        _CFG.Volume = _Volume.Value += 0.1f;
-                    }
-                    else if (InputArcade.Apertado(0, EControle.ESQUERDA))
-                    {
-                        _CFG.Volume = _Volume.Value -= 0.1f;
-                    }
-                }
-                else if (ComponenteBase.Focado(_Componentes) == _Idioma)
-                {
-                    if (InputArcade.Apertou(0, EControle.DIREITA))
-                    {
-                        _IdiomaSelecionado = _Idioma.Focar(1).Value;
-                    }
-                    else if (InputArcade.Apertou(0, EControle.ESQUERDA))
-                    {
-                        _IdiomaSelecionado = _Idioma.Focar(-1).Value;
-                    }
-                }
-                else if (ComponenteBase.Focado(_Componentes) == _Legenda)
-                {
-                    if (InputArcade.Apertou(0, EControle.DIREITA))
-                    {
-                        _LegendaSelecionada = _Legenda.Focar(1).Value;
-                    }
-                    else if (InputArcade.Apertou(0, EControle.ESQUERDA))
-                    {
-                        _LegendaSelecionada = _Legenda.Focar(-1).Value;
-                    }
-                }
-                if (InputArcade.Apertou(0, EControle.VERDE) || Input.GetKeyDown(KeyCode.Return))
-                {
-                    if (ComponenteBase.Focado(_Componentes) == _BotaoVoltar)
+                    if (InputArcade.Apertou(0, EControle.PRETO))
                     {
                         BotaoVoltarMenu();
                     }
-                    else
+                    if (InputArcade.Apertou(0, EControle.BAIXO))
                     {
                         ComponenteBase.Focar(_Componentes, 1);
+                    }
+                    if (InputArcade.Apertou(0, EControle.CIMA))
+                    {
+                        ComponenteBase.Focar(_Componentes, -1);
+                    }
+                    if (ComponenteBase.Focado(_Componentes) == _Volume)
+                    {
+                        if (InputArcade.Apertou(0, EControle.DIREITA))
+                        {
+                            _Volume.Value += 0.1f;
+                        }
+                        else if (InputArcade.Apertou(0, EControle.ESQUERDA))
+                        {
+                            _Volume.Value -= 0.1f;
+                        }
+                    }
+                    else if (ComponenteBase.Focado(_Componentes) == _Idioma)
+                    {
+                        if (InputArcade.Apertou(0, EControle.DIREITA))
+                        {
+                            _IdiomaSelecionado = _Idioma.Focar(1).Value;
+                        }
+                        else if (InputArcade.Apertou(0, EControle.ESQUERDA))
+                        {
+                            _IdiomaSelecionado = _Idioma.Focar(-1).Value;
+                        }
+                    }
+                    else if (ComponenteBase.Focado(_Componentes) == _Legenda)
+                    {
+                        if (InputArcade.Apertou(0, EControle.DIREITA))
+                        {
+                            _LegendaSelecionada = _Legenda.Focar(1).Value;
+                        }
+                        else if (InputArcade.Apertou(0, EControle.ESQUERDA))
+                        {
+                            _LegendaSelecionada = _Legenda.Focar(-1).Value;
+                        }
+                    }
+                    if (InputArcade.Apertou(0, EControle.VERDE) || Input.GetKeyDown(KeyCode.Return))
+                    {
+                        if (ComponenteBase.Focado(_Componentes) == _BotaoVoltar)
+                        {
+                            BotaoVoltarMenu();
+                        }
+                        else
+                        {
+                            ComponenteBase.Focar(_Componentes, 1);
+                        }
                     }
                 }
             }
@@ -103,6 +106,30 @@ namespace Assets.Scripts.UI
         {
             _CFG.Idioma = (EIdiomas)Enum.ToObject(typeof(EIdiomas), Array.IndexOf(GoogleTradutor._Siglas, _IdiomaSelecionado));
             _CFG.Legenda = (EIdiomas)Enum.ToObject(typeof(EIdiomas), Array.IndexOf(GoogleTradutor._Siglas, _LegendaSelecionada));
+        }
+
+        public void Volume()
+        {
+            _CFG.Volume = _Volume.Value;
+        }
+
+        public void Volume(int pInc)
+        {
+            _Volume.Value += pInc / 100f;
+        }
+
+        public void MarcaItemCombo(ItemCombo pItem)
+        {
+            if (pItem.Combo == _Idioma)
+            {
+                _Idioma.Focar(pItem);
+                _IdiomaSelecionado = pItem.Value;
+            }
+            else if (pItem.Combo == _Legenda)
+            {
+                _Legenda.Focar(pItem);
+                _LegendaSelecionada = pItem.Value;
+            }
         }
     }
 }

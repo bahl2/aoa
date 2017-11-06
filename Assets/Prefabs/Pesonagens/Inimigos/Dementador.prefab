@@ -342,7 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BarraVida: {fileID: 114134566250997996}
   _Velocidade: 70
-  _Direcao: 0
+  _Direcao: 1
   _Acao: 0
   _DistanciaMin: 15
   _TempoPatrulhar: 3

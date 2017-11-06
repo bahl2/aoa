@@ -72,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4728721530590518}
   - component: {fileID: 95023815899729418}
+  - component: {fileID: 114507337056089212}
   m_Layer: 0
   m_Name: Legenda
   m_TagString: Untagged
@@ -121,16 +122,27 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114507337056089212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730000414056870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2dcd649f8221b44bc772038c4cc380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114817217203010962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,22 +191,21 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5b437b7e12282184899695bb8eb88849, type: 3}
-    m_FontSize: 12
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sauda\xE7\xF5es meu amigo,\n\nComo n\xE3o sou de viagens, tive um pressentimento
-    que voc\xEA iria precisar de alguma ajuda, por sorte descobri que ao entrar no
-    mundo humano alguns de seus poderes divinos s\xE3o limitados ou impossivel de
-    se usar, como suas asas, lhe enviei esse oobjeto que permite voar por alguns minutos.\n\nPS:
-    Fa\xE7a bom uso!\n\nContamos com voc\xEA! "
+  m_Text: "Sauda\xE7\xF5es meu amigo,\n\nComo descobri que ao entrar no mundo humano
+    alguns de seus poderes divinos s\xE3o limitados, um exemplo: suas asas, por isso
+    lhe enviei esse item que permite voar por um tempo.\n\nFa\xE7a bom uso!\n\nContamos
+    com voc\xEA! "
 --- !u!114 &114995645830576164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,16 +261,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1114723174536324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.20000458, y: 0.39997864, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224296131488084326}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.20000076, y: 0.39998475}
-  m_SizeDelta: {x: 200.8, y: 292.1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.5, y: -7.200012}
+  m_SizeDelta: {x: -186.8, y: -334.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224296131488084326
 RectTransform:
@@ -268,17 +279,17 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1144627423022390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24, y: 0.000015258789, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224209836449699212}
   m_Father: {fileID: 224396876441956202}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24, y: 0.0000076294}
-  m_SizeDelta: {x: 299.5, y: 454.9}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 110.8, y: 11.7}
+  m_SizeDelta: {x: -1076.3, y: 126}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224396876441956202
 RectTransform:

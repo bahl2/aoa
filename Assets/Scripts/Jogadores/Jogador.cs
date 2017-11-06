@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Global;
+﻿using ArcadePUCCampinas;
+using Assets.Scripts.Global;
 using Assets.Scripts.UI;
 using System.Collections;
 using UnityEngine;
@@ -7,17 +8,63 @@ namespace Assets.Scripts.Jogadores
 {
     public class Jogador : Personagem
     {
+        [SerializeField]
+        internal GameObject _MenuPause;
+        [SerializeField]
+        internal GameObject _MapaMundi;
+        [SerializeField]
+        internal GameObject _Manual;
+        [SerializeField]
+        internal EJogador _Jogador;
         internal bool _BotaoCombo1;
         internal bool _BotaoCombo2;
         internal bool _BotaoCombo3;
         public BarraProgresso _BarraMana;
         public BarraProgresso _BarraSpecial;
 
+        internal enum EJogador
+        {
+            Jogador1,
+            Jogador2
+        }
+
+        internal override void Start()
+        {
+            base.Start();
+            _MenuPause.SetActive(false);
+            _MapaMundi.SetActive(false);
+            _Manual.SetActive(false);
+        }
+
         internal override void Update()
         {
             base.Update();
             if (Ativo)
+            {
+                if (!ArcadeJogo._noMenu && CFG._Plataforma == CFG.EPlataforma.Arcade)
+                {
+                    if (InputArcade.Apertou(0, EControle.MENU))
+                    {
+                        ArcadeJogo.MostrarMenu();
+                    }
+                }
+                else
+                {
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        _MenuPause.SetActive(true);
+                    }
+                }
+                if (InputArcade.Apertou((int)_Jogador, EControle.PRETO))
+                {
+                    _MapaMundi.SetActive(true);
+                }
+                else if (InputArcade.Apertou((int)_Jogador, EControle.VERMELHO))
+                {
+                    _Manual.SetActive(true);
+                }
                 Animacao();
+            }
             else Para();
         }
 
