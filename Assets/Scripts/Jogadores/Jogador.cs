@@ -31,7 +31,7 @@ namespace Assets.Scripts.Jogadores
         internal override void Start()
         {
             base.Start();
-            _MenuPause.SetActive(false);
+            //_MenuPause.SetActive(false);
             _MapaMundi.SetActive(false);
             _Manual.SetActive(false);
         }

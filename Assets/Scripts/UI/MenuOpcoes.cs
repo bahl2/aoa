@@ -94,23 +94,24 @@ namespace Assets.Scripts.UI
 
         internal override IEnumerator Ativa(bool pValor)
         {
-            _IdiomaSelecionado = GoogleTradutor._Siglas[(int)_CFG.Idioma];
-            _LegendaSelecionada = GoogleTradutor._Siglas[(int)_CFG.Legenda];
+            _IdiomaSelecionado = GoogleTradutor._Siglas[(int)CFG.Idioma];
+            _LegendaSelecionada = GoogleTradutor._Siglas[(int)CFG.Legenda];
             _Idioma.Value = _IdiomaSelecionado;
             _Legenda.Value = _LegendaSelecionada;
-            _Volume.Value = _CFG.Volume;
+            _Volume.Value = CFG.Volume;
             return base.Ativa(pValor);
         }
 
         public void BotaoVoltarMenu()
         {
-            _CFG.Idioma = (EIdiomas)Enum.ToObject(typeof(EIdiomas), Array.IndexOf(GoogleTradutor._Siglas, _IdiomaSelecionado));
-            _CFG.Legenda = (EIdiomas)Enum.ToObject(typeof(EIdiomas), Array.IndexOf(GoogleTradutor._Siglas, _LegendaSelecionada));
+            CFG.Idioma = (EIdiomas)Enum.ToObject(typeof(EIdiomas), Array.IndexOf(GoogleTradutor._Siglas, _IdiomaSelecionado));
+            CFG.Legenda = (EIdiomas)Enum.ToObject(typeof(EIdiomas), Array.IndexOf(GoogleTradutor._Siglas, _LegendaSelecionada));
+            StartCoroutine(_CFG.TraduzTextos());
         }
 
         public void Volume()
         {
-            _CFG.Volume = _Volume.Value;
+            CFG.Volume = _Volume.Value;
         }
 
         public void Volume(int pInc)

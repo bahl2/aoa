@@ -33,7 +33,7 @@ namespace Assets.Scripts.Global
             PC
         }
 
-        public EIdiomas Idioma
+        public static EIdiomas Idioma
         {
             get
             {
@@ -42,11 +42,10 @@ namespace Assets.Scripts.Global
             set
             {
                 PlayerPrefs.SetString("Idioma", GoogleTradutor._Siglas[(int)value]);
-                StartCoroutine(TraduzTextos());
             }
         }
 
-        public EIdiomas Legenda
+        public static EIdiomas Legenda
         {
             get
             {
@@ -58,7 +57,7 @@ namespace Assets.Scripts.Global
             }
         }
 
-        public float Volume
+        public static float Volume
         {
             get
             {
@@ -104,7 +103,7 @@ namespace Assets.Scripts.Global
             }
         }
 
-        private IEnumerator TraduzTextos()
+        public IEnumerator TraduzTextos()
         {
             _TelaCarregando.sortingOrder = 1;
             _MenuPrincipal.Ativo = false;
