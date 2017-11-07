@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\Inimigos\ControleCaveira.cs" />
      <Compile Include="Assets\Scripts\Inimigos\ControleDementador.cs" />
      <Compile Include="Assets\Scripts\Inimigos\Inimigo.cs" />
+     <Compile Include="Assets\Scripts\Inimigos\Lucifer.cs" />
      <Compile Include="Assets\Scripts\Inimigos\Poder.cs" />
      <Compile Include="Assets\Scripts\Jogadores\ControleMiguel.cs" />
      <Compile Include="Assets\Scripts\Jogadores\Cristal.cs" />
@@ -72,14 +73,16 @@
      <Compile Include="Assets\Scripts\Jogadores\Pena.cs" />
      <Compile Include="Assets\Scripts\Objetos\ObjGoogleTradutor.cs" />
      <Compile Include="Assets\Scripts\UI\BarraProgresso.cs" />
+     <Compile Include="Assets\Scripts\UI\CarregaFala.cs" />
      <Compile Include="Assets\Scripts\UI\ComponenteBase.cs" />
      <Compile Include="Assets\Scripts\UI\ComponenteCombo.cs" />
      <Compile Include="Assets\Scripts\UI\ComponenteSlider.cs" />
      <Compile Include="Assets\Scripts\UI\ItemCombo.cs" />
-     <Compile Include="Assets\Scripts\UI\Legenda.cs" />
      <Compile Include="Assets\Scripts\UI\MenuBase.cs" />
      <Compile Include="Assets\Scripts\UI\MenuOpcoes.cs" />
+     <Compile Include="Assets\Scripts\UI\MenuPause.cs" />
      <Compile Include="Assets\Scripts\UI\MenuPrincipal.cs" />
+     <Compile Include="Assets\Scripts\UI\TelaAtiva.cs" />
      <None Include="Assets\Plugins\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
      <None Include="Assets\Plugins\Lava_Flowing_Shader\Shaders\Unlit_Lava_Simple.shader" />
      <None Include="Assets\Plugins\Lava_Flowing_Shader\Shaders\Diffuse_Lava_Distort.shader" />
@@ -92,7 +95,6 @@
      <None Include="Assets\Plugins\Lava_Flowing_Shader\ReadMe.txt" />
      <None Include="Assets\Plugins\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Plugins\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
-     <None Include="Assets\Documentos Roteiro\Narração - Falas.txt" />
      <None Include="Assets\Plugins\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>C:/Users/Bah/Documents/game/aoa/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
