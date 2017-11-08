@@ -46,7 +46,7 @@ namespace Assets.Scripts.UI
             {
                 _Fala.text = lFala;
                 _Fala.CrossFadeAlpha(100, 0, true);
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(10);
                 _Fala.CrossFadeAlpha(0, 0, true);
             }
         }

@@ -7,9 +7,9 @@ namespace Assets.Scripts.Global
     public class ControleFase : MonoBehaviour
     {
         [SerializeField]
-        private GameObject _BotoesArcade;
+        private GameObject[] _BotoesArcade;
         [SerializeField]
-        private GameObject _BotoesPC;
+        private GameObject[] _BotoesPC;
         private Inimigo[] _Inimigos;
         public Jogador[] _Jogadores;
         public GameObject _Legenda;
@@ -17,8 +17,14 @@ namespace Assets.Scripts.Global
         private void Start()
         {
             _Legenda.SetActive(false);
-            _BotoesArcade.SetActive(CFG._Plataforma == CFG.EPlataforma.Arcade);
-            _BotoesPC.SetActive(CFG._Plataforma == CFG.EPlataforma.PC);
+            foreach (GameObject lBotaoArcade in _BotoesArcade)
+            {
+                lBotaoArcade.SetActive(CFG._Plataforma == CFG.EPlataforma.Arcade);
+            }
+            foreach (GameObject lBotaoArcade in _BotoesPC)
+            {
+                lBotaoArcade.SetActive(CFG._Plataforma == CFG.EPlataforma.PC);
+            }
             _Jogadores = FindObjectsOfType<Jogador>();
             foreach (Jogador lJogador in _Jogadores)
             {
