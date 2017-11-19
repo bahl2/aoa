@@ -1,6 +1,7 @@
 ﻿using ArcadePUCCampinas;
 using Assets.Scripts.Global;
 using Assets.Scripts.UI;
+using EZCameraShake;
 using System.Collections;
 using UnityEngine;
 
@@ -13,27 +14,30 @@ namespace Assets.Scripts.Jogadores
         [SerializeField]
         internal GameObject _MapaMundi;
         [SerializeField]
-        internal GameObject _Manual;
+        internal GameObject _Missoes;
         [SerializeField]
-        internal EJogador _Jogador;
+        internal Controles.EJogador _Jogador;
+        [SerializeField]
+        internal float _MagShake;
+        [SerializeField]
+        internal float _RougShake;
+        [SerializeField]
+        internal float _FadeinShake;
+        [SerializeField]
+        internal float _FadeOutShake;
         internal bool _BotaoCombo1;
         internal bool _BotaoCombo2;
         internal bool _BotaoCombo3;
+        internal CameraShakeInstance _CameraShake;
         public BarraProgresso _BarraMana;
         public BarraProgresso _BarraSpecial;
 
-        internal enum EJogador
-        {
-            Jogador1,
-            Jogador2
-        }
 
         internal override void Start()
         {
             base.Start();
-            //_MenuPause.SetActive(false);
             _MapaMundi.SetActive(false);
-            _Manual.SetActive(false);
+            _Missoes.SetActive(false);
         }
 
         internal override void Update()
@@ -55,13 +59,13 @@ namespace Assets.Scripts.Jogadores
                         _MenuPause.SetActive(true);
                     }
                 }
-                if (InputArcade.Apertou((int)_Jogador, EControle.PRETO))
+                if (Controles.Mapa(_Jogador))
                 {
                     _MapaMundi.SetActive(true);
                 }
-                else if (InputArcade.Apertou((int)_Jogador, EControle.VERMELHO))
+                else if (Controles.Missoes(_Jogador))
                 {
-                    _Manual.SetActive(true);
+                    _Missoes.SetActive(true);
                 }
                 Animacao();
             }
@@ -168,6 +172,12 @@ namespace Assets.Scripts.Jogadores
         {
             _Acao = EAcoes.Parado;
             _VelocidadeAtual = 0;
+            if (_CameraShake != null)
+            {
+                _CameraShake.DeleteOnInactive = true;
+                _CameraShake.StartFadeOut(_FadeOutShake);
+                _CameraShake = null;
+            }
         }
 
         internal virtual void Anda()
@@ -198,6 +208,11 @@ namespace Assets.Scripts.Jogadores
         {
             if (_BarraSpecial._Atual > 0)
             {
+                if (_CameraShake == null)
+                {
+                    _CameraShake = CameraShaker.Instance.StartShake(_MagShake, _RougShake, _FadeinShake);
+                    _CameraShake.DeleteOnInactive = false;
+                }
                 _VelocidadeAtual = _Velocidade;
                 _Acao = EAcoes.Combo3;
             }

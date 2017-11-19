@@ -1,5 +1,5 @@
-﻿using ArcadePUCCampinas;
-using Assets.Scripts.Audio;
+﻿using Assets.Scripts.Audio;
+using Assets.Scripts.Global;
 using System.Collections;
 using UnityEngine;
 
@@ -40,12 +40,12 @@ namespace Assets.Scripts.Jogadores
             base.Update();
             if (Ativo)
             {
-                _Eixo.y = InputArcade.Eixo(0, EEixo.VERTICAL);
-                _Eixo.x = InputArcade.Eixo(0, EEixo.HORIZONTAL);
-                _BotaoCombo1 = InputArcade.Apertou(0, EControle.AZUL);
-                _BotaoCombo2 = InputArcade.Apertou(0, EControle.AMARELO);
-                _BotaoCombo3 = InputArcade.Apertou(0, EControle.BRANCO);
-                _BotaoVoo = InputArcade.Apertou(0, EControle.VERDE);
+                _Eixo.y = Controles.EixoY(_Jogador);
+                _Eixo.x = Controles.EixoX(_Jogador);
+                _BotaoCombo1 = Controles.Combo1(_Jogador);
+                _BotaoCombo2 = Controles.Combo2(_Jogador);
+                _BotaoCombo3 = Controles.Combo3(_Jogador);
+                _BotaoVoo = Controles.Habilidade(_Jogador);
             }
         }
 

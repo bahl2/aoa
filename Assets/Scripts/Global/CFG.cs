@@ -70,6 +70,18 @@ namespace Assets.Scripts.Global
             }
         }
 
+        public static int Controles
+        {
+            get
+            {
+                return PlayerPrefs.GetInt("Controles");
+            }
+            set
+            {
+                PlayerPrefs.SetInt("Controles", value);
+            }
+        }
+
         private void Awake()
         {
             _Plataforma = _PlataformaJogo;
@@ -141,6 +153,8 @@ namespace Assets.Scripts.Global
                 Legenda = EIdiomas.PortuguesBR;
             if (!PlayerPrefs.HasKey("Volume"))
                 Volume = 1;
+            if (!PlayerPrefs.HasKey("Controles"))
+                Controles = 0;
         }
 
         public static TipoComponente[] ProcurarComponentesCena<TipoComponente>(Transform pPai)

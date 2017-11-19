@@ -1,5 +1,4 @@
-﻿using ArcadePUCCampinas;
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,8 +11,6 @@ namespace Assets.Scripts.Global
     {
         [SerializeField]
         private AudioSource _Audio;
-        [SerializeField]
-        private Text _Texto;
         [SerializeField]
         private Slider _Progresso;
         private static GameTags.ECenas _ProximaCena;
@@ -50,11 +47,6 @@ namespace Assets.Scripts.Global
 
         private void Start()
         {
-            if (CFG._Plataforma == CFG.EPlataforma.Arcade)
-                _Texto.text = "Verde ->  para pular";
-            else
-                _Texto.text = "Space ->  para pular";
-            _Texto.CrossFadeAlpha(0, 5, true);
             Cursor.visible = false;
             if (_Segundos == 0)
             {
@@ -71,7 +63,7 @@ namespace Assets.Scripts.Global
         {
             if (!_CarregandoCena)
             {
-                if ((InputArcade.Apertou(0, EControle.VERDE) && Time.timeScale == 1) || _Tempo >= _Segundos)
+                if ((Input.anyKeyDown && Time.timeScale == 1) || _Tempo >= _Segundos)
                 {
                     StartCoroutine(Carrega.CarregaCena(GameTags._Cenas[(int)_ProximaCena], _Progresso));
                     _CarregandoCena = true;
