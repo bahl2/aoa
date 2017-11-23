@@ -8,7 +8,9 @@ namespace Assets.Scripts.UI
     public class MenuPrincipal : MenuBase
     {
         [SerializeField]
-        private ComponenteBase _BotaoJogar;
+        private ComponenteBase _BotaoHistoria;
+        [SerializeField]
+        private ComponenteBase _BotaoDesafio;
         [SerializeField]
         private ComponenteBase _BotaoOpcoes;
         [SerializeField]
@@ -38,9 +40,13 @@ namespace Assets.Scripts.UI
                     }
                     if (InputArcade.Apertou(0, EControle.VERDE) || Input.GetKeyDown(KeyCode.Return))
                     {
-                        if (ComponenteBase.Focado(_Componentes) == _BotaoJogar)
+                        if (ComponenteBase.Focado(_Componentes) == _BotaoHistoria)
                         {
-                            BotaoJogar();
+                            BotaoHistoria();
+                        }
+                        else if (ComponenteBase.Focado(_Componentes) == _BotaoDesafio)
+                        {
+                            BotaoDesafio();
                         }
                         else if (ComponenteBase.Focado(_Componentes) == _BotaoOpcoes)
                         {
@@ -60,10 +66,17 @@ namespace Assets.Scripts.UI
             Application.Quit();
         }
 
-        public void BotaoJogar()
+        public void BotaoHistoria()
         {
+            CFG.ModoJogo = CFG.EModosJogo.Historia;
             CutScene.Video = _Video;
             CutScene.ProximaCena = GameTags.ECenas.Fase1;
+        }
+
+        public void BotaoDesafio()
+        {
+            CFG.ModoJogo = CFG.EModosJogo.Desafio;
+            Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.Fase1];
         }
 
         public void BotaoOpcoes()

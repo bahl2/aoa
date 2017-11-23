@@ -8,6 +8,10 @@ namespace Assets.Scripts.Global
         private Transform _CenarioDestino;
         [SerializeField]
         private ETransporte _TipoTransporte;
+        [SerializeField]
+        private Vector2 _LimiteMaxCenario;
+        [SerializeField]
+        private Vector2 _LimiteMinCenario;
         private Camera _Camera;
 
         private enum ETransporte
@@ -24,8 +28,11 @@ namespace Assets.Scripts.Global
         private void OnTriggerEnter2D(Collider2D pColisao)
         {
             pColisao.transform.position = _CenarioDestino.position;
-            _Camera.GetComponent<SegueObjeto>()._Limita = _TipoTransporte == ETransporte.Volta;
+            _Camera.GetComponent<SegueObjeto>()._Limita = false;
+            _Camera.GetComponent<SegueObjeto>()._LimiteMax = _LimiteMaxCenario;
+            _Camera.GetComponent<SegueObjeto>()._LimiteMin = _LimiteMinCenario;
             _Camera.transform.position = _CenarioDestino.position + new Vector3(0, 0, _Camera.transform.position.z);
+            _Camera.GetComponent<SegueObjeto>()._Limita = true;
         }
     }
 }

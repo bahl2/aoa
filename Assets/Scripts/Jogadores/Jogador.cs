@@ -54,7 +54,7 @@ namespace Assets.Scripts.Jogadores
                 }
                 else
                 {
-                    if (Input.GetKeyDown(KeyCode.Escape))
+                    if (Input.GetKeyDown(KeyCode.Escape) && !_MenuPause.activeSelf)
                     {
                         _MenuPause.SetActive(true);
                     }
@@ -225,11 +225,6 @@ namespace Assets.Scripts.Jogadores
                 yield return new WaitForSeconds(5);
                 _BarraMana.Add(-10);
             }
-        }
-
-        public virtual void Reinicia()
-        {
-            Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
         }
     }
 }

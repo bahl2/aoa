@@ -62,6 +62,7 @@ namespace Assets.Scripts.UI
             {
                 lPersonagem.Ativo = false;
             }
+            Time.timeScale = 0;
         }
 
         private void OnDisable()
@@ -71,6 +72,14 @@ namespace Assets.Scripts.UI
             foreach (Personagem lPersonagem in lPersonagens)
             {
                 lPersonagem.Ativo = true;
+            }
+            Time.timeScale = 1;
+        }
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) && gameObject.activeSelf)
+            {
+                gameObject.SetActive(false);
             }
         }
     }

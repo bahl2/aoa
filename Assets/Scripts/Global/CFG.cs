@@ -33,6 +33,12 @@ namespace Assets.Scripts.Global
             PC
         }
 
+        public enum EModosJogo
+        {
+            Historia,
+            Desafio
+        }
+
         public static EIdiomas Idioma
         {
             get
@@ -81,6 +87,8 @@ namespace Assets.Scripts.Global
                 PlayerPrefs.SetInt("Controles", value);
             }
         }
+
+        public static EModosJogo ModoJogo { get; set; }
 
         private void Awake()
         {

@@ -87,6 +87,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Legenda: {fileID: 0}
+  _Poderes:
+  - {fileID: 0}
 --- !u!212 &212129218017524960
 SpriteRenderer:
   m_ObjectHideFlags: 1

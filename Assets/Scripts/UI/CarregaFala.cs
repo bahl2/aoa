@@ -14,6 +14,7 @@ namespace Assets.Scripts.UI
         private Inimigo _Espirito;
         private Text _Fala;
         private bool _TextoApareceu;
+        private int _FalaAtual;
 
         private void Start()
         {
@@ -35,6 +36,7 @@ namespace Assets.Scripts.UI
                 {
                     _Espirito._Acao = Global.Personagem.EAcoes.Aparecendo;
                 }
+                _FalaAtual = 0;
                 StartCoroutine(TrocaFala());
             }
         }
@@ -42,12 +44,19 @@ namespace Assets.Scripts.UI
         private IEnumerator TrocaFala()
         {
             _TextoApareceu = true;
-            foreach (string lFala in _Falas)
+            _Fala.gameObject.SetActive(true);
+            while (true)
             {
-                _Fala.text = lFala;
-                _Fala.CrossFadeAlpha(100, 0, true);
-                yield return new WaitForSeconds(10);
-                _Fala.CrossFadeAlpha(0, 0, true);
+                if (_FalaAtual < _Falas.Length)
+                    _Fala.text = _Falas[_FalaAtual];
+                else
+                {
+                    _Fala.gameObject.SetActive(false);
+                    Destroy(gameObject);
+                }
+                yield return new WaitForSeconds(5);
+                if (Time.timeScale > 0)
+                    _FalaAtual++;
             }
         }
     }

@@ -16,6 +16,8 @@ namespace Assets.Scripts.Inimigos
         internal Jogador _Jogador;
         internal float _TempoAtacando;
         internal Transform _Bateu;
+        [SerializeField]
+        internal GameObject _Drop;
 
         private void OnCollisionEnter2D(Collision2D pColisao)
         {
@@ -64,32 +66,35 @@ namespace Assets.Scripts.Inimigos
 
         internal virtual void MovimentoIA()
         {
-            switch (_Acao)
+            if (_Jogador != null)
             {
-                case EAcoes.Patrulhando:
-                    {
-                        if (JogadorPerto())
+                switch (_Acao)
+                {
+                    case EAcoes.Patrulhando:
                         {
-                            Persegue();
+                            if (JogadorPerto())
+                            {
+                                Persegue();
+                            }
+                            else
+                            {
+                                Patrulha();
+                            }
+                            break;
                         }
-                        else
+                    case EAcoes.Perseguindo:
                         {
-                            Patrulha();
+                            if (JogadorPerto() && _Bateu == null)
+                            {
+                                Persegue();
+                            }
+                            else if (!JogadorPerto() && _Bateu == null)
+                            {
+                                Patrulha();
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case EAcoes.Perseguindo:
-                    {
-                        if (JogadorPerto() && _Bateu == null)
-                        {
-                            Persegue();
-                        }
-                        else if (!JogadorPerto() && _Bateu == null)
-                        {
-                            Patrulha();
-                        }
-                        break;
-                    }
+                }
             }
             _TempoAtacando += Time.deltaTime;
             _TempoPatrulhando += Time.deltaTime;
@@ -125,6 +130,13 @@ namespace Assets.Scripts.Inimigos
         {
             _VelocidadeAtual = _Velocidade;
             _Acao = EAcoes.Perseguindo;
+        }
+
+        public override void Destruir()
+        {
+            if (_Drop != null)
+                Instantiate(_Drop, transform.position, Quaternion.identity);
+            base.Destruir();
         }
     }
 }

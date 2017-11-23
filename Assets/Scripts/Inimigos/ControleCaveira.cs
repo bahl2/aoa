@@ -16,32 +16,35 @@
         internal override void MovimentoIA()
         {
             base.MovimentoIA();
-            switch (_Acao)
+            if (_Jogador != null)
             {
-                case EAcoes.Atacando:
-                    {
-                        if (_Bateu == _Jogador.transform)
+                switch (_Acao)
+                {
+                    case EAcoes.Atacando:
                         {
-                            Ataca();
+                            if (_Bateu == _Jogador.transform)
+                            {
+                                Ataca();
+                            }
+                            else if (JogadorPerto())
+                            {
+                                Persegue();
+                            }
+                            else
+                            {
+                                Patrulha();
+                            }
+                            break;
                         }
-                        else if (JogadorPerto())
+                    case EAcoes.Perseguindo:
                         {
-                            Persegue();
+                            if (_Bateu == _Jogador.transform)
+                            {
+                                Ataca();
+                            }
+                            break;
                         }
-                        else
-                        {
-                            Patrulha();
-                        }
-                        break;
-                    }
-                case EAcoes.Perseguindo:
-                    {
-                        if (_Bateu == _Jogador.transform)
-                        {
-                            Ataca();
-                        }
-                        break;
-                    }
+                }
             }
         }
 
