@@ -34,6 +34,7 @@ namespace Assets.Scripts.Inimigos
                 Jogador lJogador = pColisao.GetComponent<Jogador>();
                 if (lJogador != null)
                 {
+                    lJogador.Ativo = true;
                     lJogador._BarraVida.Add(-_Dano);
                     Destroy(gameObject);
                 }

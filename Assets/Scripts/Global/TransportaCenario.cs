@@ -27,7 +27,7 @@ namespace Assets.Scripts.Global
 
         private void OnTriggerEnter2D(Collider2D pColisao)
         {
-            pColisao.transform.position = _CenarioDestino.position;
+            pColisao.transform.position = new Vector3(_CenarioDestino.position.x, _CenarioDestino.position.y, pColisao.transform.position.z);
             _Camera.GetComponent<SegueObjeto>()._Limita = false;
             _Camera.GetComponent<SegueObjeto>()._LimiteMax = _LimiteMaxCenario;
             _Camera.GetComponent<SegueObjeto>()._LimiteMin = _LimiteMinCenario;

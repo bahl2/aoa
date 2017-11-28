@@ -3,6 +3,7 @@ using Assets.Scripts.Jogadores;
 using Assets.Scripts.Objetos;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Global
 {
@@ -16,6 +17,14 @@ namespace Assets.Scripts.Global
         private GameObject _TimeTrial;
         [SerializeField]
         private CarregaRancking _Rancking;
+        [SerializeField]
+        private GameObject _MenuPause;
+        [SerializeField]
+        private Text[] _TextosBotoes;
+        [SerializeField]
+        private Slider _Progresso;
+        [SerializeField]
+        private GameObject _Carregando;
         private Inimigo[] _Inimigos;
         public Jogador[] _Jogadores;
         public static GameObject _Legenda;
@@ -85,13 +94,15 @@ namespace Assets.Scripts.Global
 
         private IEnumerator TraduzTextos()
         {
-
-            GoogleTradutor lGoogleTradutor = new GoogleTradutor(GoogleTradutor._Siglas[(int)CFG.Idioma], _Rancking._Titulo.text);
-            yield return lGoogleTradutor.Traduzir();
-            _Rancking._Titulo.text = lGoogleTradutor._Resposta;
-            lGoogleTradutor = new GoogleTradutor(GoogleTradutor._Siglas[(int)CFG.Idioma], _Rancking._Sair.text);
-            yield return lGoogleTradutor.Traduzir();
-            _Rancking._Sair.text = lGoogleTradutor._Resposta;
+            for (int i = 0; i < _TextosBotoes.Length; i++)
+            {
+                GoogleTradutor lGoogleTradutor = new GoogleTradutor(GoogleTradutor._Siglas[(int)CFG.Idioma], _TextosBotoes[i].text);
+                yield return lGoogleTradutor.Traduzir();
+                _TextosBotoes[i].text = lGoogleTradutor._Resposta;
+                _Progresso.value = _TextosBotoes.Length / (i + 1);
+            }
+            Destroy(_Carregando);
+            _MenuPause.SetActive(false);
             _Rancking.gameObject.SetActive(false);
         }
     }

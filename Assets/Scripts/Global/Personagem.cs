@@ -116,7 +116,8 @@ namespace Assets.Scripts.Global
 
         internal virtual IEnumerator Ativa(bool pValor)
         {
-            yield return new WaitForSeconds(0.5f);
+            if (pValor)
+                yield return new WaitForSeconds(0.5f);
             _Ativo = pValor;
         }
 

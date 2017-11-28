@@ -5,9 +5,12 @@ namespace Assets.Scripts.UI
 {
     public class TelaAtiva : MonoBehaviour
     {
+        private float _Tempo;
+
         private void Update()
         {
-            if (Input.anyKeyDown)
+            _Tempo += Time.deltaTime;
+            if (Input.anyKeyDown && _Tempo > 5)
             {
                 gameObject.SetActive(false);
             }

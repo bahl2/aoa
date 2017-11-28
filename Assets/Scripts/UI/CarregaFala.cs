@@ -34,6 +34,8 @@ namespace Assets.Scripts.UI
                 }
                 if (_Espirito != null)
                 {
+                    lJogador.Ativo = false;
+                    lJogador.transform.position = new Vector3(transform.position.x, transform.position.y, lJogador.transform.position.z);
                     _Espirito._Acao = Global.Personagem.EAcoes.Aparecendo;
                 }
                 _FalaAtual = 0;
