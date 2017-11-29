@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224779010545316386}
   - component: {fileID: 222263563541999392}
   - component: {fileID: 114547561315178704}
-  m_Layer: 5
+  m_Layer: 19
   m_Name: Barra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224318608167464290}
   - component: {fileID: 222636633686948746}
   - component: {fileID: 114202640279405830}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: Barra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 224077177123374572}
   - component: {fileID: 222754289582511984}
   - component: {fileID: 114119818732509446}
-  m_Layer: 5
+  m_Layer: 19
   m_Name: Profile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 224700959095444692}
   - component: {fileID: 222979876161953872}
   - component: {fileID: 114578839991059890}
-  m_Layer: 5
+  m_Layer: 19
   m_Name: Fundo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 224340095324071746}
   - component: {fileID: 222741206297626962}
   - component: {fileID: 114127327815021234}
-  m_Layer: 5
+  m_Layer: 19
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 224150442152104344}
   - component: {fileID: 222053061675155610}
   - component: {fileID: 114057302932079152}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: Barra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224229195538565752}
   - component: {fileID: 114947653182673750}
-  m_Layer: 5
+  m_Layer: 19
   m_Name: BarraSpecial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224165166133319612}
   - component: {fileID: 114833463387325358}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: BarraMana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 224601655658312908}
   - component: {fileID: 222111235059171798}
   - component: {fileID: 114643715534094438}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: Fundo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 224275472543356994}
   - component: {fileID: 222460476383083860}
   - component: {fileID: 114217188308326164}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: Fundo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224148490224014682}
   - component: {fileID: 114360853278924422}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: BarraVida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224786939444583426}
-  m_Layer: 5
+  m_Layer: 19
   m_Name: InterfaceJogador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e32ac10074c3e6d4db657631069bd27f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb6a9634f2207b3479755061e024a1df, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -521,15 +521,15 @@ RectTransform:
   m_GameObject: {fileID: 1325604565363254}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999985, y: 0.999985, z: 0.999985}
+  m_LocalScale: {x: 0.9999986, y: 0.9999986, z: 0.9999986}
   m_Children: []
   m_Father: {fileID: 224786939444583426}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 347.99997, y: -160}
-  m_SizeDelta: {x: 610.5, y: 281}
+  m_AnchoredPosition: {x: 239.04, y: -158.5}
+  m_SizeDelta: {x: 317.02, y: 251}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224148490224014682
 RectTransform:
@@ -548,7 +548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 466.6, y: -138.8}
+  m_AnchoredPosition: {x: 466.5996, y: -138.79999}
   m_SizeDelta: {x: 2.3, y: 0.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224150442152104344
@@ -586,7 +586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 448.9, y: -191.8}
+  m_AnchoredPosition: {x: 448.9004, y: -191.8}
   m_SizeDelta: {x: 2.3, y: 0.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224229195538565752
@@ -606,7 +606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150.8, y: -152.3}
+  m_AnchoredPosition: {x: 150.80078, y: -152.3}
   m_SizeDelta: {x: 167.7, y: 185.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224275472543356994
@@ -660,7 +660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 365.2, y: -161.3}
+  m_AnchoredPosition: {x: 365.19922, y: -161.3}
   m_SizeDelta: {x: 558.8, y: 224.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224601655658312908

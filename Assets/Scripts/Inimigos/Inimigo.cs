@@ -12,12 +12,12 @@ namespace Assets.Scripts.Inimigos
         internal float _TempoPatrulhar;
         [SerializeField]
         internal float _TempoAtaque;
+        [SerializeField]
+        internal GameObject _Drop;
         internal float _TempoPatrulhando;
         internal Jogador _Jogador;
         internal float _TempoAtacando;
         internal Transform _Bateu;
-        [SerializeField]
-        internal GameObject _Drop;
 
         private void OnCollisionEnter2D(Collision2D pColisao)
         {
@@ -62,6 +62,13 @@ namespace Assets.Scripts.Inimigos
                 MovimentoIA();
             }
             else _VelocidadeAtual = 0;
+        }
+
+        public override void Destruir()
+        {
+            if (_Drop != null)
+                Instantiate(_Drop, transform.position, Quaternion.identity);
+            base.Destruir();
         }
 
         internal virtual void MovimentoIA()
@@ -130,13 +137,6 @@ namespace Assets.Scripts.Inimigos
         {
             _VelocidadeAtual = _Velocidade;
             _Acao = EAcoes.Perseguindo;
-        }
-
-        public override void Destruir()
-        {
-            if (_Drop != null)
-                Instantiate(_Drop, transform.position, Quaternion.identity);
-            base.Destruir();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Inimigos;
 using Assets.Scripts.Jogadores;
 using Assets.Scripts.Objetos;
+using Assets.Scripts.UI;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;

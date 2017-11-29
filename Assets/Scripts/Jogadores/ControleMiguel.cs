@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Audio;
-using Assets.Scripts.Global;
+﻿using Assets.Scripts.Global;
 using System.Collections;
 using UnityEngine;
 
@@ -97,12 +96,6 @@ namespace Assets.Scripts.Jogadores
         {
             _Acao = EAcoes.Voando;
             _VelocidadeAtual = _Velocidade * 2;
-        }
-
-        public void Passo()
-        {
-            _ControleSons.clip = ControleAudio._Passo;
-            _ControleSons.Play();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Jogadores;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,8 +22,13 @@ namespace Assets.Scripts.UI
             while (true)
             {
                 yield return new WaitForSecondsRealtime(1);
-                if (Time.timeScale > 0)
+                if (Time.timeScale > 0 && FindObjectOfType<Jogador>().Ativo)
+                {
                     _Tempo++;
+                    GetComponent<Animator>().enabled = true;
+                }
+                else
+                    GetComponent<Animator>().enabled = false;
                 _Contador.text = _Tempo.ToString();
             }
         }

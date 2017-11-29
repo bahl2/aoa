@@ -17,11 +17,6 @@
             return "http://138.197.0.169";
         }
 
-        public static string UrlExecQuery()
-        {
-            return ServerHost() + "/ExecQuery.php";
-        }
-
         public static string ServerHostGoogleTradutor()
         {
             return "https://translate.googleapis.com/translate_a/single?client=gtx&sl=";

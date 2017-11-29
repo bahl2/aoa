@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Global
 {
-    [RequireComponent(typeof(AudioSource))]
     public class Personagem : MonoBehaviour
     {
         internal bool _Ativo;
@@ -12,7 +11,6 @@ namespace Assets.Scripts.Global
         internal Rigidbody2D _Controle;
         internal Animator _Animacao;
         internal float _VelocidadeAtual;
-        internal AudioSource _ControleSons;
         public BarraProgresso _BarraVida;
         public float _Velocidade;
         public EDirecao _Direcao;
@@ -69,7 +67,6 @@ namespace Assets.Scripts.Global
         {
             _Controle = GetComponent<Rigidbody2D>();
             _Animacao = GetComponent<Animator>();
-            _ControleSons = GetComponent<AudioSource>();
             _VelocidadeAtual = _Velocidade;
             _Ativo = true;
         }
