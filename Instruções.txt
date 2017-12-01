@@ -1,0 +1,3 @@
+1 - Abrir o projeto no unity 2017.1.1p3
+2 - Ecolher a plataforma de teste (PC ou Arcade na cena menu principal a partir do script cfg localizado na MainCamera)
+3 - Play
