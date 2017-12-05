@@ -20,6 +20,17 @@ namespace Assets.Scripts.UI
         [SerializeField]
         private VideoClip _Video;
 
+        private void Start()
+        {
+            if (CFG._Plataforma == CFG.EPlataforma.Arcade)
+            {
+                _BotaoHistoria.transform.position = _BotaoDesafio.transform.position;
+                _BotaoDesafio.gameObject.SetActive(false);
+                _BotaoOpcoes.TabOrder = 1;
+                _BotaoSair.TabOrder = 2;
+            }
+        }
+
         private void Update()
         {
             if (_Ativo && Time.timeScale == 1)
@@ -38,7 +49,7 @@ namespace Assets.Scripts.UI
                     {
                         ComponenteBase.Focar(_Componentes, -1);
                     }
-                    if (InputArcade.Apertou(0, EControle.VERDE) || Input.GetKeyDown(KeyCode.Return))
+                    if (InputArcade.Apertou(0, EControle.VERDE))
                     {
                         if (ComponenteBase.Focado(_Componentes) == _BotaoHistoria)
                         {

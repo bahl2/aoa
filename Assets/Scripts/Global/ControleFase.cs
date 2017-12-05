@@ -17,7 +17,7 @@ namespace Assets.Scripts.Global
         [SerializeField]
         private GameObject _TimeTrial;
         [SerializeField]
-        private CarregaRancking _Rancking;
+        private CarregaRanking _CarregaRanking;
         [SerializeField]
         private GameObject _MenuPause;
         [SerializeField]
@@ -26,8 +26,11 @@ namespace Assets.Scripts.Global
         private Slider _Progresso;
         [SerializeField]
         private GameObject _Carregando;
+        [SerializeField]
+        private GameObject _Save;
         private Inimigo[] _Inimigos;
         public Jogador[] _Jogadores;
+        public static bool _FimJogo;
         public static GameObject _Legenda;
         public static GameObject _PoderPena;
         public static int _Caveiras;
@@ -35,6 +38,7 @@ namespace Assets.Scripts.Global
 
         private void Start()
         {
+            _FimJogo = false;
             _Legenda = GameObject.FindWithTag("Legenda");
             _Legenda.SetActive(false);
             foreach (GameObject lBotaoArcade in _BotoesArcade)
@@ -66,29 +70,43 @@ namespace Assets.Scripts.Global
             {
                 if (_Inimigos.Length <= 0)
                 {
-                    Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
-                }
-            }
-            else
-            {
-                Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
-            }
-            if (_Jogadores != null)
-            {
-                if (_Jogadores.Length <= 0)
-                {
                     if (CFG.ModoJogo == CFG.EModosJogo.Desafio)
                     {
-                        _Rancking.gameObject.SetActive(true);
+                        _FimJogo = true;
+                        _CarregaRanking.gameObject.SetActive(true);
                     }
                     else
                     {
+                        _FimJogo = true;
                         Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
                     }
                 }
             }
             else
             {
+                _FimJogo = true;
+                Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
+            }
+
+            if (_Jogadores != null)
+            {
+                if (_Jogadores.Length <= 0)
+                {
+                    if (CFG.ModoJogo == CFG.EModosJogo.Desafio)
+                    {
+                        _FimJogo = true;
+                        _CarregaRanking.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        _FimJogo = true;
+                        Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
+                    }
+                }
+            }
+            else
+            {
+                _FimJogo = true;
                 Carrega.Cena = GameTags._Cenas[(int)GameTags.ECenas.MenuPrincipal];
             }
         }
@@ -104,7 +122,7 @@ namespace Assets.Scripts.Global
             }
             Destroy(_Carregando);
             _MenuPause.SetActive(false);
-            _Rancking.gameObject.SetActive(false);
+            _CarregaRanking.gameObject.SetActive(false);
         }
     }
 }

@@ -981,7 +981,7 @@ MonoBehaviour:
   _MenuOpcoes: {fileID: 739267749}
   _TelaCarregando: {fileID: 947204144}
   _MenuPrincipal: {fileID: 557565779}
-  _PlataformaJogo: 1
+  _PlataformaJogo: 0
 --- !u!1 &446432242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,7 +1180,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Componentes:
   - {fileID: 101925715}
-  - {fileID: 906204105}
   - {fileID: 1721972824}
   - {fileID: 927926151}
   _BotaoHistoria: {fileID: 101925715}

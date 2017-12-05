@@ -14,7 +14,7 @@
 
         public static string ServerHost()
         {
-            return "http://138.197.0.169";
+            return "http://104.236.78.90:3000/";
         }
 
         public static string ServerHostGoogleTradutor()

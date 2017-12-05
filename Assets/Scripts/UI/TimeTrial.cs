@@ -22,13 +22,18 @@ namespace Assets.Scripts.UI
             while (true)
             {
                 yield return new WaitForSecondsRealtime(1);
-                if (Time.timeScale > 0 && FindObjectOfType<Jogador>().Ativo)
+                Jogador lJogador = FindObjectOfType<Jogador>();
+                if (lJogador != null)
                 {
-                    _Tempo++;
-                    GetComponent<Animator>().enabled = true;
+                    if (Time.timeScale > 0 && lJogador.Ativo)
+                    {
+                        _Tempo++;
+                        GetComponent<Animator>().enabled = true;
+                    }
+                    else
+                        GetComponent<Animator>().enabled = false;
                 }
-                else
-                    GetComponent<Animator>().enabled = false;
+                else GetComponent<Animator>().enabled = false;
                 _Contador.text = _Tempo.ToString();
             }
         }

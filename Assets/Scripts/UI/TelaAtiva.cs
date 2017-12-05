@@ -10,7 +10,7 @@ namespace Assets.Scripts.UI
         private void Update()
         {
             _Tempo += Time.deltaTime;
-            if (Input.anyKeyDown && _Tempo > 5)
+            if (Input.anyKeyDown && _Tempo > 3.5)
             {
                 gameObject.SetActive(false);
             }
